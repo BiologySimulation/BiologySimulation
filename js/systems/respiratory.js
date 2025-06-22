@@ -3,28 +3,35 @@ import { change } from '../core/state-utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from '../core/utils.js';
 import { state } from '../core/state.js';
 
-export function loadrespiratory(val = 1) {
-    if (val !== 2) {
-        change(state.m.getChild(), "loadrespiratory(0)");
+export function loadrespiratory(val) {
+    change(state.m.getChild(), "loadrespiratory(0)");
+    if (checkvis(document.querySelectorAll(".respbtns")[0]) || val == 0 || val == 2) {
+        Swal.close();
+        clear();
+        clearbtns();
+        showbtn(backHuman);
+        if (val == 2) {
+            clearbtns();
+            // hidebtn(showsystems);
+            hidebtn(backcell);
+            hidebtn(backPageBtn);
+            hidebtn(backHuman);
+        }
     }
-    clear();
-    clearbtns();
-    document.getElementById("title").innerHTML = "Respiratory System";
 
-    importmesh("trachea.glb", new BABYLON.Vector3(10, 0, 10), new BABYLON.Vector3(0, 5, 0), 23, new BABYLON.Vector3(15, 15, 15));
-    camera.upperRadiusLimit = 100;
-    
-    createSphereBtn(0.8556685562009205, 5.889500466127727, 0.49144617724636674, () => {
-        createBasicPopup("Lungs & Diaphragm", "", document.querySelectorAll(".respbtns"));
-    }, 0.4);
-
-    document.getElementById('backHuman').style.display = 'block';
-    document.getElementById('lungcsbtn').style.display = 'block';
-    document.getElementById('diaphragmbtn').style.display = 'block';
+    importmesh("lung.glb", new BABYLON.Vector3(0, 0, 3), new BABYLON.Vector3(0, -0.75, 0), null, new BABYLON.Vector3(0.18, 0.18, 0.18));
+    loaddiaphragm();
+    // camera.radius.upperRadiusLimit = 100;
+    // camera.radius = 15;
+    showbtn(backHuman);
+    title.innerHTML = "Respiratory System"
+    createSphereBtn(0,0.2,0.025,function(){createBasicPopup("Trachea","The trachea is the long tube that connects your larynx (voice box) to your bronchi. Your bronchi send air to your lungs.");},0.05);
+    createSphereBtn(0,0,0.025,function(){createBasicPopup("Bronchi","The bronchi are the two large tubes that carry air from the windpipe (trachea) into the lungs and back out again.", document.querySelectorAll(".bronchibtns"));},0.05);
+    createSphereBtn(0.36621450755113255,-0.9993902851519447,0.22129484768301144,function(){createBasicPopup("Diaphragm","The diaphragm is a muscular dome that separates the abdominal and thoracic (chest) chambers. Its ability to contract and relax to aid in breathing is essential to respiration. The diaphragm flattens and contracts during inhalation, expanding the thoracic cavity's volume and producing a vacuum that pulls air into the lungs. It relaxes and takes on the shape of a dome during exhalation, reducing the volume of the thoracic cavity and releasing air from the lungs. In addition to offering structural support, the diaphragm divides the heart and lungs from the abdominal organs. By raising stomach pressure, it also helps with other body processes like sneezing, coughing etc. The diaphragm is coordinated with other breathing muscles by means of the phrenic nerves that regulate its movements.",document.querySelectorAll(".diaphragmbtns"));},0.05);
 }
 
 export function loadrespinsitu(val = 1) {
-    change(state.m.getChild(), "loadrespinsitu(0)");
+    change(state.m.getChild(), `loadrespinsitu(${val})`);
     clear();
     clearbtns();
     document.getElementById("title").innerHTML = "Respiratory System";
@@ -34,32 +41,12 @@ export function loadrespinsitu(val = 1) {
     createSphereBtn(0.8556685562009205, 5.889500466127727, 0.49144617724636674, () => {
         createBasicPopup("Lungs & Diaphragm", "", document.querySelectorAll(".respbtns"));
     }, 0.4);
-    
-    // Add commented out sphere buttons from script.js as active buttons
-    createSphereBtn(0.06539137074837198, 8.320759863924653, -0.3325914103056329, () => {
-        createBasicPopup("Larynx", "The larynx, commonly known as the voice box, is a cartilaginous structure located in the throat that plays a crucial role in speech production and protecting the airway during swallowing.");
-    }, 0.4);
-    
-    createSphereBtn(0.15748713793142244, 8.663781263101397, -0.734095474869271, () => {
-        createBasicPopup("Pharynx", "The pharynx is a muscular tube that serves as a common passageway for both air and food, connecting the nasal and oral cavities to the larynx and esophagus.");
-    }, 0.4);
-    
-    createSphereBtn(-0.16773238650178612, 10.425574829659665, 0.4786251011717475, () => {
-        createBasicPopup("Nostrils", "The nostrils are the external openings of the nasal cavity that allow air to enter the respiratory system and are lined with hairs and mucus to filter out particles.");
-    }, 0.4);
-    
-    createSphereBtn(-0.21591421901896712, 8.479358037941617, -0.4453685576808546, () => {
-        createBasicPopup("Epiglottis", "The epiglottis is a flap of cartilage that covers the opening of the larynx during swallowing to prevent food and liquid from entering the airway.");
-    }, 0.4);
-    
-    createSphereBtn(0.1397080083473481, 9.847689668424586, 0.022215815897260516, () => {
-        createBasicPopup("Nasal Cavity", "The nasal cavity is the internal space behind the nose that warms, humidifies, and filters incoming air before it reaches the lungs.");
-    }, 0.4);
 
     document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loadtrachea() {
+    change(state.m.getChild(), "loadtrachea()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Trachea";
@@ -68,6 +55,7 @@ export function loadtrachea() {
 }
 
 export function loadlungs() {
+    change(state.m.getChild(), "loadlungs()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Lungs";
@@ -76,6 +64,7 @@ export function loadlungs() {
 }
 
 export function loadbronchi() {
+    change(state.m.getChild(), "loadbronchi()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Bronchi";
@@ -84,6 +73,7 @@ export function loadbronchi() {
 }
 
 export function loadlungcs() {
+    change(state.m.getChild(), "loadlungcs()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Lung Cross Section";
@@ -92,6 +82,7 @@ export function loadlungcs() {
 }
 
 export function loaddiaphragm() {
+    change(state.m.getChild(), "loaddiaphragm()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Diaphragm";
@@ -100,11 +91,11 @@ export function loaddiaphragm() {
 }
 
 export function loaddiaphragmonly(val = 1) {
-    change(state.m.getChild(), "loaddiaphragmonly(0)");
+    change(state.m.getChild(), `loaddiaphragmonly(${val})`);
     clear();
     clearbtns();
     document.getElementById("title").innerHTML = "Diaphragm";
-    importmesh("diaphragm.glb");
+    importmesh("diaphragm.glb", null, false, null, new BABYLON.Vector3(7, 7, -7), new BABYLON.Vector3(0, -3, 0));
     document.getElementById('diaphragmbtn').style.display = 'none';
     document.getElementById('backHuman').style.display = 'block';
 } 

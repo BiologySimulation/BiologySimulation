@@ -6,7 +6,7 @@ import { state } from '../core/state.js';
 export function loadskeletal() {
     clear();
     clearbtns();
-    change(state.m.getChild(), "loadskeletal(0)");
+    change(state.m.getChild(), "loadskeletal()");
     document.getElementById("title").innerHTML = "Skeletal System";
     importmesh("skeletal.glb", new BABYLON.Vector3(4.7, 1.25, -127), new BABYLON.Vector3(0, -0.25, 0), 23, new BABYLON.Vector3(0.9, 0.9, 0.9));
 
@@ -46,7 +46,7 @@ export function loadskeletal() {
 
     // Create sphere buttons for each bone
     createSphereBtn(0, 7, -0.51, () => {
-        createImagePopUp("Skull", "Protects the brain and houses sensory organs like the eyes and ears. Click the button to learn more.", "images/skullpicture.jpg", window.innerWidth * 0.6, window.innerHeight * 0.4, [skullevbtn]);
+        createImagePopUp("Skull", "Protects the brain and houses sensory organs like the eyes and ears. Click the button to learn more.", "images/skullpicture.jpg", window.innerWidth * 0.6, window.innerHeight * 0.4, document.querySelectorAll(".skullbtns"));
     });
     
     createSphereBtn(0, 3, 0.8, () => {
@@ -97,9 +97,10 @@ export function loadskeletal() {
 }
 
 export function loadskull(val) {
-    change(state.m.getChild(), "loadskull(0)");
-    if (checkvis(skullbtns[0]) || val == 0) {
+    change(state.m.getChild(), `loadskull(${val})`);
+    if (checkvis(document.querySelectorAll(".skullbtns")[0]) || val == 0) {
         showui();
+        clear()
         title.innerHTML = "Skull"
         importmesh("skull.glb", new BABYLON.Vector3(4.7, 0, 30), new BABYLON.Vector3(0, 0, 0), 23, new BABYLON.Vector3(5, 5, 5));
         camera.upperRadiusLimit = 100;
@@ -109,7 +110,7 @@ export function loadskull(val) {
 }
 
 export function loadspinalcord(val) {
-    change(state.m.getChild(), "loadspinalcord(0)");
+    change(state.m.getChild(), `loadspinalcord(${val})`);
     if (checkvis(cordbtns[0]) || val == 0) {
         showui();
         clearbtns();

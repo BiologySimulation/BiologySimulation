@@ -6,8 +6,6 @@ import * as cell from './systems/cell.js';
 import * as skeletal from './systems/skeletal.js';
 import * as human from './systems/human.js';
 import * as nervous from './systems/nervous.js';
-import * as eye from './systems/eye.js';
-import * as ear from './systems/ear.js';
 import * as cardiovascular from './systems/cardiovascular.js';
 import * as digestive from './systems/digestive.js';
 import * as respiratory from './systems/respiratory.js';
@@ -24,8 +22,6 @@ Object.assign(window, {
     ...skeletal,
     ...human,
     ...nervous,
-    ...eye,
-    ...ear,
     ...cardiovascular,
     ...digestive,
     ...respiratory,

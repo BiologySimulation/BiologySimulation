@@ -4,6 +4,7 @@ import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from 
 import { state } from '../core/state.js';
 
 export function loadendocrine() {
+    change(state.m.getChild(), "loadendocrine()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Endocrine System";
@@ -17,6 +18,7 @@ export function loadendocrine() {
 }
 
 export function loadendocrine1() {
+    change(state.m.getChild(), "loadendocrine1()");
     clear();
     clearbtns();
     document.getElementById('title').innerHTML = "Endocrine System";

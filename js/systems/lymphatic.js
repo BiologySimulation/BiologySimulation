@@ -1,10 +1,11 @@
 import { change } from '../core/state-utils.js';
 import { clickcond, importmesh, clear, clearbtns, showui, createSphereBtn, createBasicPopup } from '../core/utils.js';
+import { state } from '../core/state.js';
 
 const LYMPHATIC_BUTTON_IDS = ["spleenbtn"]; // Placeholder
 
 export function loadlymphatic() {
-    change("loadlymphatic(0)");
+    change(state.m.getChild(), "loadlymphatic()");
 
     const lymphaticButton = document.getElementById("lymphatic");
     if (lymphaticButton?.style.display !== 'none') {
@@ -38,13 +39,13 @@ export function loadlymphatic() {
         createSphereBtn(-2.363506068828399, 1.9300334174393425, -6.519252118903179, () => {
             createBasicPopup("Bone Marrow", "Bone marrow is a spongy tissue found within certain bones that serves as the primary site for the production of blood cells, including immune cells like B-cells and T-cell precursors. It plays a foundational role in the lymphatic system by generating cells critical for both innate and adaptive immunity. B-cells mature in the bone marrow before entering circulation to fight infections. ");
         }, 0.4);
-
+        
         document.getElementById('backHuman').style.display = 'block';
     }
 }
 
 export function loadspleen() {
-    change("loadspleen(0)");
+    change(state.m.getChild(), "loadspleen()");
     clear();
     clearbtns();
 

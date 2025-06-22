@@ -1,5 +1,5 @@
 import { scene, camera, engine } from "./babylon-setup.js";
-import { state, backcell, backHuman, humanmeshes, eyebtns } from "./state.js";
+import { state, backcell, backHuman, humanmeshes, eyebtns, buttons, buttonArrays } from "./state.js";
 
 export function clear() {
     state.meshes.forEach((mesh) => {
@@ -10,18 +10,44 @@ export function clear() {
 
 export function showui() {
     engine.displayLoadingUI();
+    
+    // Manually make the loading UI visible
+    const loadingDiv = document.getElementById('babylonjsLoadingDiv');
+    if (loadingDiv) {
+        loadingDiv.style.opacity = '1';
+        loadingDiv.style.pointerEvents = 'auto';
+    }
 }
 
 export function hideui() {
     engine.hideLoadingUI();
+    
+    // Manually hide the loading UI
+    const loadingDiv = document.getElementById('babylonjsLoadingDiv');
+    if (loadingDiv) {
+        loadingDiv.style.opacity = '0';
+        loadingDiv.style.pointerEvents = 'none';
+    }
 }
 
 export function clearbtns() {
-    // Dispose BabylonJS sphere buttons
-    state.buttons.forEach((button) => {
-        button.dispose();
+    // Hide individual buttons
+    buttons.forEach(button => {
+        if (button && button.style) {
+            button.style.display = 'none';
+        }
     });
-    state.buttons = [];
+    
+    // Hide button arrays
+    buttonArrays.forEach(buttonArray => {
+        if (buttonArray && buttonArray.length) {
+            buttonArray.forEach(button => {
+                if (button && button.style) {
+                    button.style.display = 'none';
+                }
+            });
+        }
+    });
 
     // Hide all HTML UI elements and panels
     hideui();
@@ -29,8 +55,10 @@ export function clearbtns() {
 
 export function importmesh(filename, camera_position = null, camera_target = null, camera_radius = null, scaling = null, position = null) {
     Swal.close();
+    showui();
+    
     BABYLON.SceneLoader.ImportMesh("", "", `models/${filename}`, scene, function (meshes) {
-        showui();
+        hideui();
         // imports 3D model
         if (camera_target === false) {
             // do not change camera.target
@@ -52,6 +80,10 @@ export function importmesh(filename, camera_position = null, camera_target = nul
             camera.radius = camera_radius;
         }
         state.meshes.push(meshes[0]);
+    }, null, function (scene, error) {
+        // Error callback - hide loading UI if model fails to load
+        hideui();
+        console.error("Failed to load model:", filename, error);
     });
 }
 
@@ -356,6 +388,10 @@ export function orgsettings(psorg) {
 export function change(prev, next) {
     state.m.change(prev);
     state.m.change(next);
+}
+
+export function backPage() {
+    eval(state.m.getParent());
 }
 
 export function btncheck(mem) {

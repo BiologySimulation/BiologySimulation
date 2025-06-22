@@ -4,7 +4,7 @@ import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from 
 import { state } from '../core/state.js';
 
 export function loadnervous(val) {
-    change(state.m.getChild(), "loadnervous(0)");
+    change(state.m.getChild(), `loadnervous(${val})`);
     showui();
     clearbtns();
     document.getElementById("title").innerHTML = "Nervous System"
@@ -20,7 +20,7 @@ export function loadnervous(val) {
 }
 
 export function loadbrain(val) {
-    change(state.m.getChild(), "loadbrain(0)");
+    change(state.m.getChild(), `loadbrain(${val})`);
     if (checkvis(document.querySelectorAll(".brainbtns")[0]) || val == 0) {
         showui();
         clear();

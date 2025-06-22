@@ -6,7 +6,7 @@ import { state } from '../core/state.js';
 export function loaddigestive() {
     clear();
     clearbtns();
-    change(state.getChild(), "loaddigestive(0)");
+    change(state.m.getChild(), "loaddigestive()");
     document.getElementById('title').innerHTML = "Digestive System";
     importmesh("digestive_system1.glb", new BABYLON.Vector3(4.7, 15.25, -127), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(0.25, 0.25, 0.25));
     
@@ -57,7 +57,7 @@ export function loaddigestive() {
 export function loaddigestiveinsitu() {
     clear();
     clearbtns();
-    change(state.m.getChild(), "loaddigestiveinsitu(0)");
+    change(state.m.getChild(), "loaddigestiveinsitu()");
     document.getElementById('title').innerHTML = "Digestive System";
     importmesh("digestiveinsitu.glb", new BABYLON.Vector3(4.7, 10.25, -127), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(0.25, 0.25, 0.25));
     
@@ -71,7 +71,7 @@ export function loaddigestiveinsitu() {
 export function loadliver() {
     clear();
     clearbtns();
-    change(state.getChild(), "loadliver(0)");
+    change(state.m.getChild(), "loadliver()");
     document.getElementById('title').innerHTML = "Liver";
     importmesh("livergallbladder.glb", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(0, 0, 0), 23, new BABYLON.Vector3(50, 50, 50));
     
@@ -85,7 +85,7 @@ export function loadliver() {
 export function loadintestine() {
     clear();
     clearbtns();
-    change(state.getChild(), "loadintestine(0)");
+    change(state.m.getChild(), "loadintestine()");
     document.getElementById('title').innerHTML = "Small Intestine";
     importmesh("intestine.glb", new BABYLON.Vector3(0, 0, 20), new BABYLON.Vector3(0.007446692495163276, 2.7207984888092964, -0.6814251652840753), 23, new BABYLON.Vector3(10, 10, 10));
     
@@ -115,7 +115,7 @@ export function loadintestine() {
 export function loadstomach() {
     clear();
     clearbtns();
-    change(state.getChild(), "loadstomach(0)");
+    change(state.m.getChild(), "loadstomach()");
     document.getElementById('title').innerHTML = "Stomach";
     importmesh("stomach.glb", new BABYLON.Vector3(0,0,0), null, null, new BABYLON.Vector3(0.1, 0.1, 0.1));
     document.getElementById('backHuman').style.display = 'block';
@@ -124,7 +124,7 @@ export function loadstomach() {
 export function loadpancreas() {
     clear();
     clearbtns();
-    change(state.getChild(), "loadpancreas(0)");
+    change(state.m.getChild(), "loadpancreas()");
     document.getElementById('title').innerHTML = "Pancreas";
     importmesh("pancreas.glb", new BABYLON.Vector3(4.7, 15.25, -127), new BABYLON.Vector3(-8, 0, 0), 23, new BABYLON.Vector3(30, 30, 30));
     document.getElementById('backHuman').style.display = 'block';
@@ -133,7 +133,7 @@ export function loadpancreas() {
 export function loadcolon() {
     clear();
     clearbtns();
-    change(state.getChild(), "loadcolon(0)");
+    change(state.m.getChild(), "loadcolon()");
     document.getElementById('title').innerHTML = "Colon (Large Intestine)";
     importmesh("colon.glb", new BABYLON.Vector3(190, 0, -200), new BABYLON.Vector3(0, 0, 0), 23, new BABYLON.Vector3(0.025, 0.025, 0.025));
     document.getElementById('backHuman').style.display = 'block';
@@ -142,7 +142,7 @@ export function loadcolon() {
 export function loadesophagus() {
     clear();
     clearbtns();
-    change(state.getChild(), "loadesophagus(0)");
+    change(state.m.getChild(), "loadesophagus()");
     document.getElementById('title').innerHTML = "Esophagus";
     importmesh("esophagus.glb", new BABYLON.Vector3(190, 0, -200), new BABYLON.Vector3(-1.092117200582102, -0.14979557160125978, 1.9156961717874594), 23, new BABYLON.Vector3(1, 1, 1));
     document.getElementById('backHuman').style.display = 'block';

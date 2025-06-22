@@ -4,7 +4,7 @@ import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from 
 import { state } from '../core/state.js';
 
 function cellSpheres() {
-    createSphereBtn(new BABYLON.Vector3(0, 0, 3.8), () => {
+    createSphereBtn(0, 0, 3.8, function () {
         Swal.fire({
             title: "Cell Membrane",
             text: "The cell membrane is composed primarily of a phospholipid bilayer, with other molecules such as proteins and cholesterol embedded. Phospholipids have 2 unsaturated fatty acid tails and one head. The phospholipid head is hydrophilic (it's attracted to water) and the 2 unsaturated fatty acid tails are hydrophobic (they repel water). The phospholipid bilayer has many kinks and bends in it. This allows the inside of the membrane to be fluid, meaning it can get more or less solid depending on outside conditions, such as temperature. This characteristic is mainly due to the cholesterol embedded. The many proteins in the membrane have a vast array of uses, some including being used for transport, attachment, and signaling.",
@@ -17,46 +17,62 @@ function cellSpheres() {
             width: window.innerWidth * 0.8,
             backdrop: false,
         }).then(function () {
-            document.querySelectorAll(".smlbtns").forEach(el => el.style.display = 'none');
-        });
-        document.querySelectorAll(".smlbtns").forEach(el => el.style.display = 'block');
-    });
-    createSphereBtn(new BABYLON.Vector3(0.4, 0.2, 3.3), () => {
-        createBasicPopup("Cell Mitochondria", "The mitochondria, aka the 'powerhouse of the cell', is a very important organelle that primarily functions in generating energy in the form of ATP for cellular processes through cellular respiration. The anatomy of a mitochondrion is designed to maximize energy production. The inner and outer membranes increase surface area and provide a place for energy production to happen.", document.querySelectorAll(".mitosmlbtns"));
-    });
-    createSphereBtn(new BABYLON.Vector3(0.3, 0.2, 0), () => {
-        createBasicPopup("Cell Nucleus", "The nucleus serves as the control center of the cell, and is where genetic information is stored. The DNA is enclosed in a protective structure called the nuclear envelope. This is a double membrane made up of a phospholipid bilayer, much like that of the cell membrane. Holes in the envelope, called nuclear pores, regulate what goes in and out of the nucleus. The interior of the nucleus, also called the nucleoplasm, contains the genetic material of the cell. In humans, there are 23 pairs of chromosomes, and the nucleus is where processes such as DNA replication and transcription happen. The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis.");
-    });
-    createSphereBtn(new BABYLON.Vector3(-1.3, 0.2, 1.7), () => {
-        createBasicPopup("Cell Golgi", 'The Golgi apparatus, aka the Golgi body, is an organelle composed of a series of small, flat sacs stacked in the cell\'s cytoplasm. The function of the Golgi apparatus is to sort out and package protein and lipid molecules synthesized by the ER or free-floating ribosomes for intercellular use or transport out of the cell. Additionally, the Golgi can add "tags" to molecules, making them more structurally stable. It can sometimes also locate where the tagged structure goes.', document.querySelectorAll(".golgismlbtns"));
-    });
-    createSphereBtn(new BABYLON.Vector3(0.48, 0.07, 2.11), () => {
-        document.getElementById("ribopanelbtn").style.display = 'block';
-        Swal.fire({
-            title: "Ribosome",
-            text: "Ribosomes, complexes made of ribosomal RNA (rRNA) and protein, carry out protein synthesis in cells. They are made up of a larger top subunit and a smaller bottom subunit. These both interact with mRNA and tRNA molecules to perform translation. High rates of protein synthesis are associated with an abundance of ribosomes. Ribosomes function in two cytoplasmic locations: free ribosomes in the cytosol and bound ribosomes attached to the rough endoplasmic reticulum or nuclear envelope. Both bound and free ribosomes are structurally identical and can switch roles. Free ribosomes produce proteins for the cytosol, such as enzymes catalyzing sugar breakdown, while bound ribosomes create proteins for membrane insertion, packaging within organelles, or cell export, common in cells specialized in protein secretion, like the pancreas cells that secrete digestive enzymes.",
-            icon: "question",
-            background: "black",
-            color: "white",
-            backdrop: false,
-        }).then(function () {
-            if (!document.getElementById("ribopanel").classList.contains("cd-panel--is-visible")) {
-                document.getElementById("ribopanelbtn").style.display = 'none';
+            // hides all btns that are part of roundbtns (the hiding and showing of these btns makes more sense when u run the website and physically experiment with it)
+            for (i = 0; i < roundbtns.length; i++) {
+                hidebtn(roundbtns[i]);
             }
         });
-    }, 0.15);
-    createSphereBtn(new BABYLON.Vector3(1.8, 0.2, -0.5), () => {
-        createBasicPopup("Rough Endoplasmic Reticulum", "The Rough ER, studded with ribosomes, plays a role in synthesizing and secreting proteins. It also acts as a membrane factory, growing by incorporating proteins and phospholipids and transporting them via vesicles to other parts of the cell.", document.querySelectorAll(".roughersmlbtns"));
+        // shows all btns that are part of roundbtns
+        for (i = 0; i < roundbtns.length; i++) {
+            showbtn(roundbtns[i]);
+        }
     });
-    createSphereBtn(new BABYLON.Vector3(1.22, 0.16, 1.86), () => {
-        createBasicPopup("Smooth Endoplasmic Reticulum", "(add description here)", document.querySelectorAll(".smoothersmlbtns"));
+    createSphereBtn(0.4, 0.2, 3.3, function () {
+        createBasicPopup("Cell Mitochondria", "The mitochondria, aka the 'powerhouse of the cell', is a very important organelle that primarily functions in generating energy in the form of ATP for cellular processes through cellular respiration. The anatomy of a mitochondrion is designed to maximize energy production. The inner and outer membranes increase surface area and provide a place for energy production to happen.", mitosmlbtns);
     });
-    createSphereBtn(new BABYLON.Vector3(0.35, 0.43, -0.32), () => {
-        createBasicPopup("Nucleolus", "The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis. ", document.querySelectorAll(".dnabtns"));
+    createSphereBtn(0.3, 0.2, 0, function () {
+        createBasicPopup("Cell Nucleus", "The nucleus serves as the control center of the cell, and is where genetic information is stored. The DNA is enclosed in a protective structure called the nuclear envelope. This is a double membrane made up of a phospholipid bilayer, much like that of the cell membrane. Holes in the envelope, called nuclear pores, regulate what goes in and out of the nucleus. The interior of the nucleus, also called the nucleoplasm, contains the genetic material of the cell. In humans, there are 23 pairs of chromosomes, and the nucleus is where processes such as DNA replication and transcription happen. The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis.");
     });
-    createSphereBtn(new BABYLON.Vector3(1.19, 0.15, 2.49), () => {
+    createSphereBtn(-1.3, 0.2, 1.7, function () {
+        createBasicPopup("Cell Golgi", 'The Golgi apparatus, aka the Golgi body, is an organelle composed of a series of small, flat sacs stacked in the cell\'s cytoplasm. The function of the Golgi apparatus is to sort out and package protein and lipid molecules synthesized by the ER or free-floating ribosomes for intercellular use or transport out of the cell. Additionally, the Golgi can add "tags" to molecules, making them more structurally stable. It can sometimes also locate where the tagged structure goes.', golgismlbtns);
+    });
+    createSphereBtn(
+        0.4839717512431795,
+        0.070853748469808,
+        2.111442063940009,
+        cellmeshes,
+        function () {
+            showbtn(ribopanelbtn);
+            Swal.fire({
+                title: "Ribosome",
+                text: "Ribosomes, complexes made of ribosomal RNA (rRNA) and protein, carry out protein synthesis in cells. They are made up of a larger top subunit and a smaller bottom subunit. These both interact with mRNA and tRNA molecules to perform translation. High rates of protein synthesis are associated with an abundance of ribosomes. Ribosomes function in two cytoplasmic locations: free ribosomes in the cytosol and bound ribosomes attached to the rough endoplasmic reticulum or nuclear envelope. Both bound and free ribosomes are structurally identical and can switch roles. Free ribosomes produce proteins for the cytosol, such as enzymes catalyzing sugar breakdown, while bound ribosomes create proteins for membrane insertion, packaging within organelles, or cell export, common in cells specialized in protein secretion, like the pancreas cells that secrete digestive enzymes.",
+                icon: "question",
+                background: "black",
+                color: "white",
+                backdrop: false,
+            }).then(function () {
+                // after "ok" button is clicked and the ribo info panel btn does not have the specified class, then hide the btn
+                if (!ribopanel.classList.contains("cd-panel--is-visible")) {
+                    hidebtn(ribopanelbtn);
+                }
+            });
+        },
+        0.15
+    );
+    createSphereBtn(1.8, 0.2, -0.5, function () {
+        createBasicPopup("Rough Endoplasmic Reticulum", "The Rough ER, studded with ribosomes, plays a role in synthesizing and secreting proteins. It also acts as a membrane factory, growing by incorporating proteins and phospholipids and transporting them via vesicles to other parts of the cell.", roughersmlbtns);
+    });
+    createSphereBtn(1.2248904211980474, 0.16952203700465684, 1.8693672639905412, function () {
+        createBasicPopup("Smooth Endoplasmic Reticulum", "(add description here)", smoothersmlbtns);
+    });
+    createSphereBtn(0.353150398090031, 0.4304624896982965, -0.32896007806854577, function () {
+        createBasicPopup("Nucleolus", "The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis. ", dnabtns);
+    });
+    createSphereBtn(1.1942075977140756, 0.15042321941889902, 2.4992473761184826, function () {
         createBasicPopup("Centrioles", "Centrioles are essential for cell division, aiding in the organization of microtubules during mitosis and meiosis. They also contribute to the formation of cilia and flagella, crucial for cell movement and sensory functions. ");
     });
+
+    // tells each item in the cellmeshes array what to do when the mouse cursor hovers over and moves away from the part
 }
 
 export function loadcell() {

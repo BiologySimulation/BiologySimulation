@@ -2,6 +2,43 @@
 
 const canvas = document.getElementById("babcanv"); 
 const engine = new BABYLON.Engine(canvas, true);
+
+// Custom loading screen that implements ILoadingScreen interface
+class CustomLoadingScreen {
+    constructor() {
+        this.loadingDiv = document.getElementById('babylonjsLoadingDiv');
+    }
+
+    displayLoadingUI() {
+        if (this.loadingDiv) {
+            this.loadingDiv.style.display = 'flex';
+            this.loadingDiv.style.opacity = '1';
+        }
+    }
+
+    hideLoadingUI() {
+        if (this.loadingDiv) {
+            this.loadingDiv.style.opacity = '0';
+            setTimeout(() => {
+                if (this.loadingDiv) {
+                    this.loadingDiv.style.display = 'none';
+                }
+            }, 300);
+        }
+    }
+
+    get loadingUIBackgroundColor() {
+        return "#000000";
+    }
+
+    get loadingUIText() {
+        return "Loading...";
+    }
+}
+
+// Set the custom loading screen
+engine.loadingScreen = new CustomLoadingScreen();
+
 const scene = new BABYLON.Scene(engine);
 scene.clearColor = new BABYLON.Color3(0.25, 0.45, 0.65);
 

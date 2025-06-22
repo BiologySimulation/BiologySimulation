@@ -1,9 +1,10 @@
 import { change } from '../core/state-utils.js';
 import { clickcond, importmesh, clear, clearbtns, showui, createSphereBtn, createBasicPopup } from '../core/utils.js';
+import { state } from '../core/state.js';
 
 
 export function loadskin(ind) {
-    change("loadskin(0)");
+    change(state.m.getChild(), `loadskin(${ind})`);
 
     const skinButton = document.getElementById("skin");
     if (skinButton?.style.display !== 'none' || ind === 0) {

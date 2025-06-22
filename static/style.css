@@ -270,6 +270,36 @@ input:focus, select:focus, textarea:focus {
   z-index: 9999 !important;
   background-color: var(--background);
   color: var(--text-primary);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loading-icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+  animation: spin 2s linear infinite;
+}
+
+.loading-text {
+  font-size: 18px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 /* Responsive Design */
