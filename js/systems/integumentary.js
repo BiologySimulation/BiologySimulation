@@ -1,5 +1,5 @@
-import { change } from '../core/state-utils.js';
-import { clickcond, importmesh, clear, clearbtns, showui, createSphereBtn, createBasicPopup } from '../core/utils.js';
+import { change } from '../core/utils.js';
+import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
 import { state } from '../core/state.js';
 
 
