@@ -1,10 +1,9 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, createImagePopUp, checkvis, showui, clickcond, showbtn, orgsettings } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadhuman(val) {
-    change(state.m.getChild(), `loadhuman(${val})`);
+    updateNavigationHistory(`loadhuman(${val})`);
     if (checkvis(backHuman) || val == 0) {
         showui();
         clear();
@@ -18,7 +17,7 @@ export function loadhuman(val) {
             });
         } catch (err) {}
         
-        showbtn(backcell);
+        showbtn(document.getElementById("backcell"));
         createSphereBtn(0.2, 10, -0.8, function () {
             createImagePopUp("Eye", "The eye, a complex sensory apparatus, transforms incoming light through refraction by the cornea and lens, creating precise images on the retina. Photoreceptor cells in the retina convert light into neural signals. ", "images/eyepicture.jpg", window.innerWidth * 0.5, window.innerHeight * 0.5, document.querySelectorAll(".eyebtns"));
         });
@@ -29,9 +28,10 @@ export function loadhuman(val) {
 } 
 
 export function loadeye() {
-    change(state.m.getChild(), "loadeye()");
+    updateNavigationHistory("loadeye()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Eye";
     importmesh("eye.glb", new BABYLON.Vector3(-3, 0, -35), new BABYLON.Vector3(8.3, 9.5, -2.7), 4, new BABYLON.Vector3(10, 10, 10));
     camera.upperRadiusLimit = 100;
@@ -67,9 +67,10 @@ export function loadeye() {
 }
 
 export function loadeyecs() {
-    change(state.m.getChild(), "loadeyecs()");
+    updateNavigationHistory("loadeyecs()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Eye Cross-Section";
     importmesh("eye_crosssection.glb", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(0, 0, 0), 23, new BABYLON.Vector3(1, 1, 1));
     camera.upperRadiusLimit = 100;
@@ -97,10 +98,11 @@ export function endotheliumclicked() {
 
 export function loadear(val = 1) {
     if (val !== 2) {
-        change(state.m.getChild(), `loadear(${val})`);
+        updateNavigationHistory(`loadear(${val})`);
     }
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Ear";
     importmesh("ear.glb", new BABYLON.Vector3(1, 0, -1.2), new BABYLON.Vector3(0, 0.8, 0), null, new BABYLON.Vector3(0.4, 0.4, 0.4), new BABYLON.Vector3(0, 0, 0))
     
@@ -110,10 +112,11 @@ export function loadear(val = 1) {
 
 export function loadearcs(val = 1) {
     if(val != 2){
-        change(state.m.getChild(), `loadearcs(${val})`);
+        updateNavigationHistory(`loadearcs(${val})`);
     }
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Ear Cross-Section";
     importmesh("ear_cs.glb", new BABYLON.Vector3(1, 0.8, -1), new BABYLON.Vector3(0, 0.75, 0), null, new BABYLON.Vector3(6, 6, 6), new BABYLON.Vector3(0, 0, 0))
     camera.upperRadiusLimit = 100;

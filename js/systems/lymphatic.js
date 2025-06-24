@@ -1,16 +1,16 @@
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 const LYMPHATIC_BUTTON_IDS = ["spleenbtn"]; // Placeholder
 
 export function loadlymphatic() {
-    change(state.m.getChild(), "loadlymphatic()");
+    updateNavigationHistory("loadlymphatic()");
 
     const lymphaticButton = document.getElementById("lymphatic");
     if (lymphaticButton?.style.display !== 'none') {
         clear();
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
 
         document.getElementById("title").innerHTML = "Lymphatic System";
         importmesh("lymphatic_system.glb", new BABYLON.Vector3(0, 0.5, 80), new BABYLON.Vector3(0, 0, -8), 23, new BABYLON.Vector3(0.01, 0.01, 0.01));
@@ -45,9 +45,10 @@ export function loadlymphatic() {
 }
 
 export function loadspleen() {
-    change(state.m.getChild(), "loadspleen()");
+    updateNavigationHistory("loadspleen()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
 
     document.getElementById("title").innerHTML = "Spleen";
     importmesh("spleen.glb", new BABYLON.Vector3(80, 0.5, 80), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(10, 10, 10));

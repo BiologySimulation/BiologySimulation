@@ -1,12 +1,12 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createEvolutionBtn, createBasicPopup, createImagePopUp, createPanel, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadskeletal() {
     clear();
     clearbtns();
-    change(state.m.getChild(), "loadskeletal()");
+    showbtn(document.getElementById("backHuman"));
+    updateNavigationHistory("loadskeletal()");
     document.getElementById("title").innerHTML = "Skeletal System";
     importmesh("skeletal.glb", new BABYLON.Vector3(4.7, 1.25, -127), new BABYLON.Vector3(0, -0.25, 0), 23, new BABYLON.Vector3(0.9, 0.9, 0.9));
 
@@ -97,7 +97,7 @@ export function loadskeletal() {
 }
 
 export function loadskull(val) {
-    change(state.m.getChild(), `loadskull(${val})`);
+    updateNavigationHistory(`loadskull(${val})`);
     if (checkvis(document.querySelectorAll(".skullbtns")[0]) || val == 0) {
         showui();
         clear()
@@ -105,15 +105,17 @@ export function loadskull(val) {
         importmesh("skull.glb", new BABYLON.Vector3(4.7, 0, 30), new BABYLON.Vector3(0, 0, 0), 23, new BABYLON.Vector3(5, 5, 5));
         camera.upperRadiusLimit = 100;
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
         showbtn(backHuman);
     }
 }
 
 export function loadspinalcord(val) {
-    change(state.m.getChild(), `loadspinalcord(${val})`);
+    updateNavigationHistory(`loadspinalcord(${val})`);
     if (checkvis(cordbtns[0]) || val == 0) {
         showui();
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
         clickcond(humanmeshes, cordbtns, 0);
         title.innerHTML = "Spinal Cord"
         clear();
@@ -133,6 +135,7 @@ export function loadspinalcord(val) {
             0.4
         );
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
         showbtn(backHuman);
     }
 }

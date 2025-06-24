@@ -19,11 +19,7 @@ class CustomLoadingScreen {
     hideLoadingUI() {
         if (this.loadingDiv) {
             this.loadingDiv.style.opacity = '0';
-            setTimeout(() => {
-                if (this.loadingDiv) {
-                    this.loadingDiv.style.display = 'none';
-                }
-            }, 300);
+            this.loadingDiv.style.display = 'none';
         }
     }
 

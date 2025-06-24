@@ -1,11 +1,11 @@
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadmuscular() {
     clear();
     clearbtns();
-    change(state.m.getChild(), "loadmuscular()");
+    showbtn(document.getElementById("backHuman"));
+    updateNavigationHistory("loadmuscular()");
     document.getElementById('title').innerHTML = "Muscular System";
     importmesh("muscular_system.glb", new BABYLON.Vector3(4, 1, -20), new BABYLON.Vector3(0, -2, 0), 30, new BABYLON.Vector3(0.3, 0.3, 0.3));
     

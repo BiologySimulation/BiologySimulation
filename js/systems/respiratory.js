@@ -1,17 +1,18 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadrespiratory(val) {
-    change(state.m.getChild(), "loadrespiratory(0)");
+    updateNavigationHistory("loadrespiratory(0)");
     if (checkvis(document.querySelectorAll(".respbtns")[0]) || val == 0 || val == 2) {
         Swal.close();
         clear();
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
         showbtn(backHuman);
         if (val == 2) {
             clearbtns();
+    showbtn(document.getElementById("backHuman"));
             // hidebtn(showsystems);
             hidebtn(backcell);
             hidebtn(backPageBtn);
@@ -31,9 +32,10 @@ export function loadrespiratory(val) {
 }
 
 export function loadrespinsitu(val = 1) {
-    change(state.m.getChild(), `loadrespinsitu(${val})`);
+    updateNavigationHistory(`loadrespinsitu(${val})`);
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Respiratory System";
     importmesh("respiratorysysteminsitu1.glb", new BABYLON.Vector3(10, 0, 10), new BABYLON.Vector3(0, 5, 0), 23, new BABYLON.Vector3(15, 15, 15));
     camera.upperRadiusLimit = 100;
@@ -46,54 +48,60 @@ export function loadrespinsitu(val = 1) {
 }
 
 export function loadtrachea() {
-    change(state.m.getChild(), "loadtrachea()");
+    updateNavigationHistory("loadtrachea()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Trachea";
     importmesh("trachea.glb", new BABYLON.Vector3(10, 0, 10), new BABYLON.Vector3(0, 5, 0), 23, new BABYLON.Vector3(15, 15, 15));
     document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loadlungs() {
-    change(state.m.getChild(), "loadlungs()");
+    updateNavigationHistory("loadlungs()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Lungs";
     importmesh("lung.glb", new BABYLON.Vector3(0, -10, 0));
     document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loadbronchi() {
-    change(state.m.getChild(), "loadbronchi()");
+    updateNavigationHistory("loadbronchi()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Bronchi";
     importmesh("bronchi.glb", new BABYLON.Vector3(0, 0, 30), new BABYLON.Vector3(0, 0, 0), 23, new BABYLON.Vector3(1, 1, 1));
     document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loadlungcs() {
-    change(state.m.getChild(), "loadlungcs()");
+    updateNavigationHistory("loadlungcs()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Lung Cross Section";
     importmesh("lungcs.glb", new BABYLON.Vector3(0, -4.5, -13), new BABYLON.Vector3(0, 0, 0), null, new BABYLON.Vector3(1, 1, 1));
     document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loaddiaphragm() {
-    change(state.m.getChild(), "loaddiaphragm()");
+    updateNavigationHistory("loaddiaphragm()");
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Diaphragm";
     importmesh("diaphragm.glb", null, false, null, new BABYLON.Vector3(7, 7, -7), new BABYLON.Vector3(0, -3.5, 0));
     document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loaddiaphragmonly(val = 1) {
-    change(state.m.getChild(), `loaddiaphragmonly(${val})`);
+    updateNavigationHistory(`loaddiaphragmonly(${val})`);
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Diaphragm";
     importmesh("diaphragm.glb", null, false, null, new BABYLON.Vector3(7, 7, -7), new BABYLON.Vector3(0, -3, 0));
     document.getElementById('diaphragmbtn').style.display = 'none';

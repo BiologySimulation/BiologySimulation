@@ -1,15 +1,14 @@
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
-
 
 export function loadskin(ind) {
-    change(state.m.getChild(), `loadskin(${ind})`);
+    updateNavigationHistory(`loadskin(${ind})`);
 
     const skinButton = document.getElementById("skin");
     if (skinButton?.style.display !== 'none' || ind === 0) {
         clear();
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
 
         document.getElementById("title").innerHTML = "Integumentary System (Skin)";
         importmesh("skin.glb", new BABYLON.Vector3(0, 0, -127), new BABYLON.Vector3(0, 6, 0), 23, new BABYLON.Vector3(0.05, 0.05, 0.05));
@@ -52,6 +51,7 @@ export function loadskin(ind) {
         }, 0.25);
 
         clearbtns();
+    showbtn(document.getElementById("backHuman"));
         document.getElementById('backHuman').style.display = 'block';
     }
 } 

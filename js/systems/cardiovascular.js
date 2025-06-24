@@ -1,12 +1,12 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadcirculatory() {
-    change(state.m.getChild(), "loadcirculatory()");
+    updateNavigationHistory("loadcirculatory()");
     clear();
-    clearbtns();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Circulatory System";
     importmesh("circulatory_system.glb", new BABYLON.Vector3(80, 0.5, 80), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(10, 10, 10));
     
@@ -43,9 +43,10 @@ export function loadcirculatory() {
 }
 
 export function loadheart() {
-    change(state.m.getChild(), "loadheart()");
+    updateNavigationHistory("loadheart()");
     clear();
-    clearbtns();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Heart";
     importmesh("heart.glb", new BABYLON.Vector3(80, 1.5, 50), null, null, new BABYLON.Vector3(10, 10, 10));
     createSphereBtn(2.5576482066001773,1.6891541136989279,3.9493668163700306,heartmeshes,function(){createBasicPopup("Right Atrium","The right atrium is responsible for receiving oxygen-poor blood from the body through the superior and inferior vena cava. It serves as a holding chamber that allows blood to accumulate before it is transferred to the right ventricle for further circulation.");},1.5);

@@ -1,12 +1,12 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadexcretory() {
-    change(state.m.getChild(), "loadexcretory()");
+    updateNavigationHistory("loadexcretory()");
     clear();
-    clearbtns();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Excretory System";
     importmesh("exretory_system.glb", new BABYLON.Vector3(0, 0, -15), null, null, new BABYLON.Vector3(0.01, 0.01, 0.01));
     
@@ -19,9 +19,10 @@ export function loadexcretory() {
 }
 
 export function loadkidney() {
-    change(state.m.getChild(), "loadkidney()");
+    updateNavigationHistory("loadkidney()");
     clear();
-    clearbtns();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Kidney";
     importmesh("kidney.glb", new BABYLON.Vector3(0, 0, -0.1), null, null, new BABYLON.Vector3(0.005, 0.005, 0.005));
     
@@ -50,9 +51,10 @@ export function loadkidney() {
 }
 
 export function loadnephron(val = 1) {
-    change(state.m.getChild(), `loadnephron(${val})`);
+    updateNavigationHistory(`loadnephron(${val})`);
     clear();
-    clearbtns();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Nephron";
     importmesh("nephron.glb", new BABYLON.Vector3(-80, 5, -100), null, 20, new BABYLON.Vector3(0.05, 0.05, 0.05));
     camera.upperRadiusLimit = 200;
@@ -62,7 +64,8 @@ export function loadnephron(val = 1) {
 
 export function kidney2dmodel() {
     clear();
-    clearbtns();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
     const kidneyImg = new Image();
     kidneyImg.src = 'images/kidney.png';
     kidneyImg.style.width = '80%';

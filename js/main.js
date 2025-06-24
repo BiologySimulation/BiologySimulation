@@ -1,5 +1,4 @@
 import { engine, scene } from './core/babylon-setup.js';
-import { state } from './core/state.js';
 import * as utils from './core/utils.js';
 
 import * as cell from './systems/cell.js';
@@ -14,7 +13,6 @@ import * as endocrine from './systems/endocrine.js';
 import * as integumentary from './systems/integumentary.js';
 import * as muscular from './systems/muscular.js';
 import * as excretory from './systems/excretory.js';
-import { change } from './core/state-utils.js';
 
 // Assign all imported functions to the global window object
 Object.assign(window, {
@@ -31,7 +29,6 @@ Object.assign(window, {
     ...muscular,
     ...excretory,
     ...utils,
-    change,
 });
 
 document.addEventListener('DOMContentLoaded', () => {

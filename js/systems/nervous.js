@@ -1,12 +1,12 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 export function loadnervous(val) {
-    change(state.m.getChild(), `loadnervous(${val})`);
+    updateNavigationHistory(`loadnervous(${val})`);
     showui();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Nervous System"
     clear();
     importmesh("nervous_system.glb", null, new BABYLON.Vector3(0.05740795922190678,7.15830432454763,0.9948979818070001), null, new BABYLON.Vector3(8, 8, 8));
@@ -20,7 +20,7 @@ export function loadnervous(val) {
 }
 
 export function loadbrain(val) {
-    change(state.m.getChild(), `loadbrain(${val})`);
+    updateNavigationHistory(`loadbrain(${val})`);
     if (checkvis(document.querySelectorAll(".brainbtns")[0]) || val == 0) {
         showui();
         clear();
@@ -28,7 +28,7 @@ export function loadbrain(val) {
         importmesh("limbic_system.glb", new BABYLON.Vector3(-2, 1, -60), new BABYLON.Vector3(-5, 2, -2), 50, new BABYLON.Vector3(0.35, 0.35, 0.35));
         camera.upperRadiusLimit = 100;
 
-        showbtn(document.getElementById("backHuman"));
+            showbtn(document.getElementById("backHuman"));
         showbtn(document.getElementById("exterior"));
         showbtn(document.getElementById("panelbtn"));
         hidebtn(document.getElementById("backcell"));
@@ -37,7 +37,7 @@ export function loadbrain(val) {
 }
 
 export function showExteriorBrain() {
-    change(state.m.getChild(), "showExteriorBrain()");
+    updateNavigationHistory("showExteriorBrain()");
     if (document.getElementById("exterior").textContent == "Show Exterior View") {
         document.getElementById("exterior").textContent = "Hide Exterior View";
         document.getElementById("backHuman").setAttribute("style", "opacity: 0.6 !important; cursor: not-allowed !important; pointer-events: none;");
@@ -89,6 +89,7 @@ export function showExteriorBrain() {
 export function loadneuron() {
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Neuron";
     importmesh("neuron.glb", new BABYLON.Vector3(10, 0, 120), new BABYLON.Vector3(-30, -5, 0), 100, new BABYLON.Vector3(0.01, 0.01, 0.01));
     camera.upperRadiusLimit = 100;
@@ -141,6 +142,7 @@ export function loadneuron() {
 export function loadspine() {
     clear();
     clearbtns();
+    showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Spinal Cord";
     importmesh("nervoussystem.glb", new BABYLON.Vector3(10, 1, 10), new BABYLON.Vector3(0, 5, 0), null, new BABYLON.Vector3(0.13, 0.13, 0.13));
     camera.upperRadiusLimit = 100;

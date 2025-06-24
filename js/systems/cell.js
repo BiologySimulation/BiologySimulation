@@ -1,10 +1,10 @@
 import { camera } from '../core/babylon-setup.js';
-import { change } from '../core/utils.js';
+import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn, clickcond } from '../core/utils.js';
-import { state } from '../core/state.js';
 
 function cellSpheres() {
     createSphereBtn(0, 0, 3.8, function () {
+        let btns = document.querySelectorAll(".smlbtns");
         Swal.fire({
             title: "Cell Membrane",
             text: "The cell membrane is composed primarily of a phospholipid bilayer, with other molecules such as proteins and cholesterol embedded. Phospholipids have 2 unsaturated fatty acid tails and one head. The phospholipid head is hydrophilic (it's attracted to water) and the 2 unsaturated fatty acid tails are hydrophobic (they repel water). The phospholipid bilayer has many kinks and bends in it. This allows the inside of the membrane to be fluid, meaning it can get more or less solid depending on outside conditions, such as temperature. This characteristic is mainly due to the cholesterol embedded. The many proteins in the membrane have a vast array of uses, some including being used for transport, attachment, and signaling.",
@@ -17,32 +17,29 @@ function cellSpheres() {
             width: window.innerWidth * 0.8,
             backdrop: false,
         }).then(function () {
-            // hides all btns that are part of roundbtns (the hiding and showing of these btns makes more sense when u run the website and physically experiment with it)
-            for (i = 0; i < roundbtns.length; i++) {
-                hidebtn(roundbtns[i]);
+            for (let i = 0; i < btns.length; i++) {
+                hidebtn(btns[i]);
             }
         });
-        // shows all btns that are part of roundbtns
-        for (i = 0; i < roundbtns.length; i++) {
-            showbtn(roundbtns[i]);
+        for (let i = 0; i < btns.length; i++) {
+            showbtn(btns[i]);
         }
     });
     createSphereBtn(0.4, 0.2, 3.3, function () {
-        createBasicPopup("Cell Mitochondria", "The mitochondria, aka the 'powerhouse of the cell', is a very important organelle that primarily functions in generating energy in the form of ATP for cellular processes through cellular respiration. The anatomy of a mitochondrion is designed to maximize energy production. The inner and outer membranes increase surface area and provide a place for energy production to happen.", mitosmlbtns);
+        createBasicPopup("Cell Mitochondria", "The mitochondria, aka the 'powerhouse of the cell', is a very important organelle that primarily functions in generating energy in the form of ATP for cellular processes through cellular respiration. The anatomy of a mitochondrion is designed to maximize energy production. The inner and outer membranes increase surface area and provide a place for energy production to happen.", document.querySelectorAll(".mitosmlbtns"));
     });
     createSphereBtn(0.3, 0.2, 0, function () {
         createBasicPopup("Cell Nucleus", "The nucleus serves as the control center of the cell, and is where genetic information is stored. The DNA is enclosed in a protective structure called the nuclear envelope. This is a double membrane made up of a phospholipid bilayer, much like that of the cell membrane. Holes in the envelope, called nuclear pores, regulate what goes in and out of the nucleus. The interior of the nucleus, also called the nucleoplasm, contains the genetic material of the cell. In humans, there are 23 pairs of chromosomes, and the nucleus is where processes such as DNA replication and transcription happen. The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis.");
     });
     createSphereBtn(-1.3, 0.2, 1.7, function () {
-        createBasicPopup("Cell Golgi", 'The Golgi apparatus, aka the Golgi body, is an organelle composed of a series of small, flat sacs stacked in the cell\'s cytoplasm. The function of the Golgi apparatus is to sort out and package protein and lipid molecules synthesized by the ER or free-floating ribosomes for intercellular use or transport out of the cell. Additionally, the Golgi can add "tags" to molecules, making them more structurally stable. It can sometimes also locate where the tagged structure goes.', golgismlbtns);
+        createBasicPopup("Cell Golgi", 'The Golgi apparatus, aka the Golgi body, is an organelle composed of a series of small, flat sacs stacked in the cell\'s cytoplasm. The function of the Golgi apparatus is to sort out and package protein and lipid molecules synthesized by the ER or free-floating ribosomes for intercellular use or transport out of the cell. Additionally, the Golgi can add "tags" to molecules, making them more structurally stable. It can sometimes also locate where the tagged structure goes.', document.querySelectorAll(".golgismlbtns"));
     });
     createSphereBtn(
         0.4839717512431795,
         0.070853748469808,
         2.111442063940009,
-        cellmeshes,
         function () {
-            showbtn(ribopanelbtn);
+            showbtn(document.getElementById("ribopanelbtn"));
             Swal.fire({
                 title: "Ribosome",
                 text: "Ribosomes, complexes made of ribosomal RNA (rRNA) and protein, carry out protein synthesis in cells. They are made up of a larger top subunit and a smaller bottom subunit. These both interact with mRNA and tRNA molecules to perform translation. High rates of protein synthesis are associated with an abundance of ribosomes. Ribosomes function in two cytoplasmic locations: free ribosomes in the cytosol and bound ribosomes attached to the rough endoplasmic reticulum or nuclear envelope. Both bound and free ribosomes are structurally identical and can switch roles. Free ribosomes produce proteins for the cytosol, such as enzymes catalyzing sugar breakdown, while bound ribosomes create proteins for membrane insertion, packaging within organelles, or cell export, common in cells specialized in protein secretion, like the pancreas cells that secrete digestive enzymes.",
@@ -52,9 +49,9 @@ function cellSpheres() {
                 backdrop: false,
             }).then(function () {
                 // after "ok" button is clicked and the ribo info panel btn does not have the specified class, then hide the btn
-                if (!ribopanel.classList.contains("cd-panel--is-visible")) {
-                    hidebtn(ribopanelbtn);
-                }
+                if (!document.getElementById("ribopanelbtn").classList.contains("cd-panel--is-visible")) {
+                        hidebtn(document.getElementById("ribopanelbtn"));
+                    }
             });
         },
         0.15
@@ -72,22 +69,19 @@ function cellSpheres() {
         createBasicPopup("Centrioles", "Centrioles are essential for cell division, aiding in the organization of microtubules during mitosis and meiosis. They also contribute to the formation of cilia and flagella, crucial for cell movement and sensory functions. ");
     });
 
-    // tells each item in the cellmeshes array what to do when the mouse cursor hovers over and moves away from the part
 }
 
 export function loadcell() {
-    clearbtns();
-    document.getElementById("backHuman").style.display = 'block';
-    change(state.m.getChild(), "loadcell()");
-    state.meshes.forEach(mesh => mesh.visibility = 1);
-    // This assumes human meshes will be identified or tagged appropriately in the future
-    // For now, it won't break anything.
-    document.querySelectorAll(".human-mesh").forEach(mesh => mesh.visibility = 0);
-    camera.lowerRadiusLimit = 2;
+    updateNavigationHistory("loadcell()");
+    showui();
     clear();
+    clearbtns()
+    showbtn(document.getElementById("backHuman"));
+        showbtn(document.getElementById("backHuman"));
+    document.getElementById('title').innerHTML = "Cell";
+    camera.lowerRadiusLimit = 2;
     Swal.close();
     importmesh("ribosoma.glb", null, null, null, new BABYLON.Vector3(0.4855579893367401, -0.19247690443455667, 2.106724807070549));
-    document.getElementById("title").innerHTML = "Cell";
     importmesh("animal_cell.glb", new BABYLON.Vector3(-10, 100, 5), new BABYLON.Vector3(0, 0, 0), 5);
     cellSpheres();
 }
@@ -157,10 +151,11 @@ export function loadmitochondria() {
 export function loadETC() {
     const showETCBtn = document.getElementById('showETC');
     if (showETCBtn.textContent === "Show Electron Transport Chain") {
-        change("loadETC()");
+        updateNavigationHistory("loadETC()");
         showETCBtn.textContent = "Hide Electron Transport Chain";
         clear();
-        clearbtns();
+        clearbtns()
+    showbtn(document.getElementById("backHuman"));
         importmesh("etc.glb", new BABYLON.Vector3(0,0,0), new BABYLON.Vector3(2.2716116774026744,2.9540898105264355,-15.497743901108434), null, new BABYLON.Vector3(5, 5, 5));
         document.getElementById('backcell').style.display = 'block';
         document.getElementById("title").innerHTML = "Electron Transport Chain";

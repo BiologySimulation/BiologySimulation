@@ -1,5 +1,10 @@
 import { scene, camera, engine } from "./babylon-setup.js";
-import { state, backcell, backHuman, humanmeshes, eyebtns, buttons, buttonArrays } from "./state.js";
+
+export let state = {
+    meshes: [],
+    buttons: [],
+    visibleUI: [],
+}; 
 
 export function clear() {
     state.meshes.forEach((mesh) => {
@@ -31,26 +36,13 @@ export function hideui() {
 }
 
 export function clearbtns() {
-    // Hide individual buttons
-    buttons.forEach(button => {
-        if (button && button.style) {
-            button.style.display = 'none';
+    // Set visibility to 0 for every <button> element in the document
+    const allButtons = document.querySelectorAll('button');
+    allButtons.forEach(btn => {
+        if (btn.id != "backbtn") {
+            btn.style.visibility = 'hidden';
         }
     });
-    
-    // Hide button arrays
-    buttonArrays.forEach(buttonArray => {
-        if (buttonArray && buttonArray.length) {
-            buttonArray.forEach(button => {
-                if (button && button.style) {
-                    button.style.display = 'none';
-                }
-            });
-        }
-    });
-
-    // Hide all HTML UI elements and panels
-    hideui();
 }
 
 export function importmesh(filename, camera_position = null, camera_target = null, camera_radius = null, scaling = null, position = null) {
@@ -58,7 +50,6 @@ export function importmesh(filename, camera_position = null, camera_target = nul
     showui();
     
     BABYLON.SceneLoader.ImportMesh("", "", `models/${filename}`, scene, function (meshes) {
-        hideui();
         // imports 3D model
         if (camera_target === false) {
             // do not change camera.target
@@ -80,6 +71,9 @@ export function importmesh(filename, camera_position = null, camera_target = nul
             camera.radius = camera_radius;
         }
         state.meshes.push(meshes[0]);
+        scene.executeWhenReady(() => {
+            hideui();
+        });
     }, null, function (scene, error) {
         // Error callback - hide loading UI if model fails to load
         hideui();
@@ -385,13 +379,43 @@ export function orgsettings(psorg) {
     psorg.actionManager.registerAction(new BABYLON.InterpolateValueAction(BABYLON.ActionManager.OnPointerOutTrigger, psorg.material, "diffuseColor", new BABYLON.Color3(1, 1, 1), 500)); // when the pointer moves away, the diffuseColor will transition back to white for 500 milliseconds
 }
 
-export function change(prev, next) {
-    state.m.change(prev);
-    state.m.change(next);
+// Navigation history stack for back button functionality
+class NavigationHistory {
+    constructor(initial) {
+        this.stack = [initial];
+    }
+    push(view) {
+        this.stack.push(view);
+    }
+    pop() {
+        if (this.stack.length > 1) {
+            this.stack.pop();
+        }
+        return this.stack[this.stack.length - 1];
+    }
+    current() {
+        return this.stack[this.stack.length - 1];
+    }
+}
+
+// Initialize navigation history with the default view (e.g., 'loadhuman(0)')
+const navHistory = new NavigationHistory('loadhuman(0)');
+
+let isNavigatingBack = false;
+
+export function updateNavigationHistory(func) {
+    if (!isNavigatingBack) {
+        navHistory.push(func);
+    }
 }
 
 export function backPage() {
-    eval(state.m.getParent());
+    if (navHistory.stack.length > 1) {
+        isNavigatingBack = true;
+        navHistory.pop();
+        eval(navHistory.current());
+        isNavigatingBack = false;
+    }
 }
 
 export function btncheck(mem) {
@@ -404,4 +428,4 @@ export function btncheck(mem) {
     else {
         backHuman.classList.add("animbtn");
     }
-} 
+}
