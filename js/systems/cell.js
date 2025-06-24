@@ -201,7 +201,7 @@ export function loaddna() {
     updateNavigationHistory("loaddna()");
     clear();
     importmesh("dna.glb", new BABYLON.Vector3(2.4089047395701412,-3,250), new BABYLON.Vector3(36,236.14133640561624,-22.866524279775604), null, new BABYLON.Vector3(0.1, 0.1, 0.1));
-    
+    camera.upperRadiusLimit = 500;
     document.getElementById("title").innerHTML = "DNA";
     document.getElementById('backcell').style.display = 'block';
 } 
