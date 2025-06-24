@@ -57,13 +57,13 @@ function cellSpheres() {
         0.15
     );
     createSphereBtn(1.8, 0.2, -0.5, function () {
-        createBasicPopup("Rough Endoplasmic Reticulum", "The Rough ER, studded with ribosomes, plays a role in synthesizing and secreting proteins. It also acts as a membrane factory, growing by incorporating proteins and phospholipids and transporting them via vesicles to other parts of the cell.", roughersmlbtns);
+        createBasicPopup("Rough Endoplasmic Reticulum", "The Rough ER, studded with ribosomes, plays a role in synthesizing and secreting proteins. It also acts as a membrane factory, growing by incorporating proteins and phospholipids and transporting them via vesicles to other parts of the cell.", document.querySelectorAll(".roughersmlbtns"));
     });
     createSphereBtn(1.2248904211980474, 0.16952203700465684, 1.8693672639905412, function () {
-        createBasicPopup("Smooth Endoplasmic Reticulum", "(add description here)", smoothersmlbtns);
+        createBasicPopup("Smooth Endoplasmic Reticulum", "(add description here)", document.querySelectorAll(".smoothersmlbtns"));
     });
     createSphereBtn(0.353150398090031, 0.4304624896982965, -0.32896007806854577, function () {
-        createBasicPopup("Nucleolus", "The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis. ", dnabtns);
+        createBasicPopup("Nucleolus", "The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis. ", document.querySelectorAll(".dnabtns"));
     });
     createSphereBtn(1.1942075977140756, 0.15042321941889902, 2.4992473761184826, function () {
         createBasicPopup("Centrioles", "Centrioles are essential for cell division, aiding in the organization of microtubules during mitosis and meiosis. They also contribute to the formation of cilia and flagella, crucial for cell movement and sensory functions. ");
@@ -87,6 +87,7 @@ export function loadcell() {
 }
 
 export function membraneclicked() {
+    updateNavigationHistory("membraneclicked()");
     clear();
     importmesh("cell_membrane.glb", new BABYLON.Vector3(0, 0, 0));
     document.getElementById("title").innerHTML = "Cell Membrane";
@@ -95,6 +96,7 @@ export function membraneclicked() {
 }
 
 export function phosphoclicked() {
+    updateNavigationHistory("phosphoclicked()");
     clear();
     importmesh("phospho_sama.glb", new BABYLON.Vector3(0, 0, 0));
     document.getElementById("title").innerHTML = "Phospholipid";
@@ -103,6 +105,7 @@ export function phosphoclicked() {
 }
 
 export function phosphoclicked2() {
+    updateNavigationHistory("phosphoclicked2()");
     document.getElementById("swal2-html-container").innerHTML = "<ul>Selective permeability</ul><ul>Passive transport</ul><ul>Active transport</ul><ul>Facilitated transport</ul>";
     clear();
     importmesh("phospholipid.glb", new BABYLON.Vector3(0, 0, 0), null, null, new BABYLON.Vector3(0.01, 0.01, 0.01));
@@ -112,6 +115,7 @@ export function phosphoclicked2() {
 }
 
 export function openchannel() {
+    updateNavigationHistory("openchannel()");
     clear();
     importmesh("openchannel.glb", new BABYLON.Vector3(0, 0, 0));
     document.getElementById("title").innerHTML = "Open Channel";
@@ -120,6 +124,7 @@ export function openchannel() {
 }
 
 export function cholestrolclicked() {
+    updateNavigationHistory("cholestrolclicked()");
     clear();
     importmesh("Cholestoral.glb", new BABYLON.Vector3(0, 0, 0));
     document.getElementById("title").innerHTML = "Cholesterol";
@@ -128,6 +133,7 @@ export function cholestrolclicked() {
 }
 
 export function receptorproteinclicked() {
+    updateNavigationHistory("receptorproteinclicked()");
     Swal.fire({
         html: '<img class="receptorgifs" src="images/ReceptorProteins/antiporter.gif"></img><img class="receptorgifs" src="images/ReceptorProteins/gated_channel.gif"></img><img class="receptorgifs" src="images/ReceptorProteins/open_channel.gif"></img><br><img class="receptorgifs" src="images/ReceptorProteins/symporter.gif"></img><img class="receptorgifs" src="images/ReceptorProteins/transport_rhodopsin.gif"></img><img class="receptorgifs" src="images/ReceptorProteins/uniporter.gif"></img><p style="text-align:left;">Antiporter: An antiporter is a protein that helps move two different substances across a cell membrane in opposite directions. It is crucial for maintaining things like ion balance and pH levels inside cells. <br><br> Gated Channel: A gated channel is a protein in the cell membrane that can open or close in response to certain signals, like voltage changes or molecule binding. This controls the flow of ions in and out of cells. <br><br> Symporter: A symporter is a protein that transports two molecules or ions across the membrane in the same direction. One substance often moves with its concentration gradient, helping to push the other across. <br><br> Transport Rhodopsin: Transport rhodopsin is a special light-sensitive protein found in some bacteria. When it absorbs light, it helps move ions like protons across the membrane, playing a role similar to ion pumps but activated by light. <br><br> Uniporter: A uniporter is a protein that allows one molecule or ion to passively move across the cell membrane. It only works with one type of substance at a time, usually flowing down its concentration gradient without using energy.</p>',
         backdrop: false,
@@ -139,24 +145,27 @@ export function receptorproteinclicked() {
 }
 
 export function loadmitochondria() {
+    updateNavigationHistory("loadmitochondria()");
     clear();
+    clearbtns()
     importmesh("mitocondrias.glb", new BABYLON.Vector3(0, 0, 0), null, null, new BABYLON.Vector3(5, 5, 5));
     document.getElementById("title").innerHTML = "Mitochondria";
     document.getElementById('backcell').style.display = 'block';
-    const showETCBtn = document.getElementById('showETC');
-    showETCBtn.style.display = 'block';
+    const showETCBtn = document.getElementById('ETC');
+    showbtn(showETCBtn);
+    showbtn(document.getElementById("backHuman"));
     showETCBtn.textContent = "Show Electron Transport Chain";
 }
 
 export function loadETC() {
-    const showETCBtn = document.getElementById('showETC');
+    updateNavigationHistory("loadETC()");
+    const showETCBtn = document.getElementById('ETC');
     if (showETCBtn.textContent === "Show Electron Transport Chain") {
-        updateNavigationHistory("loadETC()");
         showETCBtn.textContent = "Hide Electron Transport Chain";
         clear();
         clearbtns()
-    showbtn(document.getElementById("backHuman"));
-        importmesh("etc.glb", new BABYLON.Vector3(0,0,0), new BABYLON.Vector3(2.2716116774026744,2.9540898105264355,-15.497743901108434), null, new BABYLON.Vector3(5, 5, 5));
+        showbtn(document.getElementById("backHuman"));
+        importmesh("etc.glb", null, new BABYLON.Vector3(2.2716116774026744,2.9540898105264355,-15.497743901108434));
         document.getElementById('backcell').style.display = 'block';
         document.getElementById("title").innerHTML = "Electron Transport Chain";
     } else {
@@ -165,6 +174,7 @@ export function loadETC() {
 }
 
 export function loadgolgi() {
+    updateNavigationHistory("loadgolgi()");
     clear();
     importmesh("golgi.glb", new BABYLON.Vector3(0, 50, 0), new BABYLON.Vector3(0, 0, 0), null, new BABYLON.Vector3(5, 5, 5));
     document.getElementById("title").innerHTML = "Golgi";
@@ -172,6 +182,7 @@ export function loadgolgi() {
 }
 
 export function loadrougher() {
+    updateNavigationHistory("loadrougher()");
     clear();
     importmesh("rough_er.glb", new BABYLON.Vector3(0, 0, 0), null, null, new BABYLON.Vector3(20, 20, 20));
     document.getElementById("title").innerHTML = "Rough Endoplasmic Reticulum";
@@ -179,6 +190,7 @@ export function loadrougher() {
 }
 
 export function loadsmoother() {
+    updateNavigationHistory("loadsmoother()");
     clear();
     importmesh("smooth_er.glb", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(0, 0, 0), null, new BABYLON.Vector3(0.01, 0.01, 0.01), new BABYLON.Vector3(0, 0, 0.5));
     document.getElementById("title").innerHTML = "Smooth Endoplasmic Reticulum";
@@ -186,8 +198,10 @@ export function loadsmoother() {
 }
 
 export function loaddna() {
+    updateNavigationHistory("loaddna()");
     clear();
     importmesh("dna.glb", new BABYLON.Vector3(2.4089047395701412,-3,250), new BABYLON.Vector3(36,236.14133640561624,-22.866524279775604), null, new BABYLON.Vector3(0.1, 0.1, 0.1));
+    
     document.getElementById("title").innerHTML = "DNA";
     document.getElementById('backcell').style.display = 'block';
 } 
