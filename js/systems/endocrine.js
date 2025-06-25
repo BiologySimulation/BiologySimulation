@@ -11,7 +11,7 @@ export function loadendocrine() {
     importmesh("endocrine_system.glb", new BABYLON.Vector3(4.7, -35.25, -127), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(10, 10, 10));
     
     createSphereBtn(0.38177421210721185, 10.476974486561003, -0.7496007303027916, () => {
-        createBasicPopup("View Endocrine System", "", document.querySelectorAll(".endocrine1btns"));
+        createBasicPopup("View Endocrine System", "", () => loadendocrine1());
     }, 0.4);
     
     document.getElementById('backHuman').style.display = 'block';

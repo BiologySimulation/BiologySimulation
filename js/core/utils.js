@@ -211,7 +211,7 @@ export function createButtonPopup(buttonId, popupId) {
     }
 }
 
-export function loadskevpanel(panelID, btn) {
+export function loadPanel(panelID) {
     // console.log(btn);
     // b = document.getElementById(btn);
     // hidebtn(b);
@@ -226,7 +226,7 @@ export function createEvolutionBtn(bone, panel) {
 
     // Set the button attributes
     button.id = `${bone}panelbtn`;
-    button.setAttribute("onclick", `loadskevpanel("${panel}", "${button.id}")`);
+    button.setAttribute("onclick", `loadPanel("${panel}")`);
     button.style.display = "none";
     button.classList.add("mui-btn", "mui-btn--primary", "largeBtn", "evolutionpanel", "pulse");
 
@@ -239,8 +239,22 @@ export function createEvolutionBtn(bone, panel) {
     return button;
 }
 
-export function createBasicPopup(title, description, modelBtnRef = null) {
-    if (modelBtnRef != null) {
+export function createTabHTML(arr) {
+    var tabHTML = '<div class="tabset">';
+    for (var i=0;i<arr.length;i++) {
+        tabHTML+='<input type="radio" name="tabset" id="tab'+i+'" checked><label for="tab'+i+'">'+arr[i][0]+'</label>';
+    }
+    tabHTML+='<div class="tab-panels">';
+    for (var i=0;i<arr.length;i++) {
+        tabHTML+='<section class="tab-panel"><h2>'+arr[i][0]+'</h2><p>'+arr[i][1]+'</p></section>';
+    }
+    tabHTML+='</div></div>';
+    return tabHTML;
+}
+
+export function createBasicPopup(title, description, loadingFunction = null, modelBtnText = "3D Model", evolutionFunction = null, evolutionBtnText = "Evolution Info") {
+    if (loadingFunction != null && evolutionFunction != null) {
+        // Create popup with both 3D model and evolution buttons
         Swal.fire({
             title: title,
             text: description,
@@ -248,13 +262,62 @@ export function createBasicPopup(title, description, modelBtnRef = null) {
             background: "black",
             color: "white",
             backdrop: false,
-        }).then(function () {
-            modelBtnRef.forEach((el) => {
-                hidebtn(el);
-            });
+            showCancelButton: true,
+            showDenyButton: true,
+            confirmButtonText: "Close",
+            cancelButtonText: modelBtnText,
+            denyButtonText: evolutionBtnText,
+            cancelButtonColor: "#3085d6",
+            denyButtonColor: "#28a745",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                // User clicked "3D Model" button
+                loadingFunction();
+            } else if (result.isDenied) {
+                // User clicked "Evolution Info" button
+                evolutionFunction();
+            }
         });
-        modelBtnRef.forEach((el) => {
-            showbtn(el);
+    } else if (loadingFunction != null) {
+        // Create popup with embedded 3D model button
+        Swal.fire({
+            title: title,
+            text: description,
+            icon: "question",
+            background: "black",
+            color: "white",
+            backdrop: false,
+            showCancelButton: true,
+            confirmButtonText: "Close",
+            cancelButtonText: modelBtnText,
+            cancelButtonColor: "#3085d6",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                // User clicked "3D Model" button
+                loadingFunction();
+            }
+        });
+    } else if (evolutionFunction != null) {
+        // Create popup with embedded evolution button
+        Swal.fire({
+            title: title,
+            text: description,
+            icon: "question",
+            background: "black",
+            color: "white",
+            backdrop: false,
+            showCancelButton: true,
+            confirmButtonText: "Close",
+            cancelButtonText: evolutionBtnText,
+            cancelButtonColor: "#28a745",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                // User clicked "Evolution Info" button
+                evolutionFunction();
+            }
         });
     } else {
         Swal.fire({
@@ -334,8 +397,9 @@ export function createPanel(className, titleText, classNameClose, textInnerHTML,
     return panel;
 }
 
-export function createImagePopUp(title, description, imageURL, imageWidth, imageHeight, modelBtnRef = null) {
-    if (modelBtnRef != null) {
+export function createImagePopUp(title, description, imageURL, imageWidth, imageHeight, loadingFunction = null, modelBtnText = "3D Model", evolutionFunction = null, evolutionBtnText = "Evolution Info") {
+    if (loadingFunction != null && evolutionFunction != null) {
+        // Create popup with both 3D model and evolution buttons
         Swal.fire({
             title: title,
             text: description,
@@ -345,13 +409,66 @@ export function createImagePopUp(title, description, imageURL, imageWidth, image
             imageWidth: imageWidth,
             imageHeight: imageHeight,
             backdrop: false,
-        }).then(function () {
-            modelBtnRef.forEach((el) => {
-                hidebtn(el);
-            });
+            showCancelButton: true,
+            showDenyButton: true,
+            confirmButtonText: "Close",
+            cancelButtonText: modelBtnText,
+            denyButtonText: evolutionBtnText,
+            cancelButtonColor: "#3085d6",
+            denyButtonColor: "#28a745",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                // User clicked "3D Model" button
+                loadingFunction();
+            } else if (result.isDenied) {
+                // User clicked "Evolution Info" button
+                evolutionFunction();
+            }
         });
-        modelBtnRef.forEach((el) => {
-            showbtn(el);
+    } else if (loadingFunction != null) {
+        // Create popup with embedded 3D model button
+        Swal.fire({
+            title: title,
+            text: description,
+            background: "black",
+            color: "white",
+            imageUrl: imageURL,
+            imageWidth: imageWidth,
+            imageHeight: imageHeight,
+            backdrop: false,
+            showCancelButton: true,
+            confirmButtonText: "Close",
+            cancelButtonText: modelBtnText,
+            cancelButtonColor: "#3085d6",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                // User clicked "3D Model" button
+                loadingFunction();
+            }
+        });
+    } else if (evolutionFunction != null) {
+        // Create popup with embedded evolution button
+        Swal.fire({
+            title: title,
+            text: description,
+            background: "black",
+            color: "white",
+            imageUrl: imageURL,
+            imageWidth: imageWidth,
+            imageHeight: imageHeight,
+            backdrop: false,
+            showCancelButton: true,
+            confirmButtonText: "Close",
+            cancelButtonText: evolutionBtnText,
+            cancelButtonColor: "#28a745",
+            reverseButtons: true
+        }).then((result) => {
+            if (result.dismiss === Swal.DismissReason.cancel) {
+                // User clicked "Evolution Info" button
+                evolutionFunction();
+            }
         });
     } else {
         Swal.fire({

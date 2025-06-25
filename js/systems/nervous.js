@@ -2,8 +2,8 @@ import { camera } from '../core/babylon-setup.js';
 import { updateNavigationHistory } from '../core/utils.js';
 import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from '../core/utils.js';
 
-export function loadnervous(val) {
-    updateNavigationHistory(`loadnervous(${val})`);
+export function loadnervous() {
+    updateNavigationHistory("loadnervous()");
     showui();
     clearbtns();
     showbtn(document.getElementById("backHuman"));
@@ -11,7 +11,7 @@ export function loadnervous(val) {
     clear();
     importmesh("nervous_system.glb", null, new BABYLON.Vector3(0.05740795922190678,7.15830432454763,0.9948979818070001), null, new BABYLON.Vector3(8, 8, 8));
     createSphereBtn(-0.0847792182819817,13.727592170977577,-0.13707866476222108, function () {
-       createBasicPopup("Central Nervous System (CNS)", "The central nervous system (CNS) comprises the brain and spinal cord, serving as the primary control center for processing sensory information, generating thoughts, emotions, and memories, and coordinating voluntary and involuntary actions throughout the body. It interprets incoming data and sends out commands to the peripheral nervous system to execute responses. ", document.querySelectorAll(".spinebtns"));
+       createBasicPopup("Central Nervous System (CNS)", "The central nervous system (CNS) comprises the brain and spinal cord, serving as the primary control center for processing sensory information, generating thoughts, emotions, and memories, and coordinating voluntary and involuntary actions throughout the body. It interprets incoming data and sends out commands to the peripheral nervous system to execute responses. ", () => loadspine());
     });
     createSphereBtn(-2.117950967884778,9.656626590025594,0.807392259406166, function () {
         createBasicPopup("Peripheral Nervous System (PNS)", "The peripheral nervous system (PNS) consists of all the nerves outside the brain and spinal cord, including cranial and spinal nerves, and is responsible for transmitting sensory information to the CNS and carrying out its motor commands. It connects the CNS to muscles, glands, and sensory receptors, facilitating communication between the brain and the body's extremities and organs.");
@@ -19,21 +19,19 @@ export function loadnervous(val) {
     showbtn(backHuman);
 }
 
-export function loadbrain(val) {
-    updateNavigationHistory(`loadbrain(${val})`);
-    if (checkvis(document.querySelectorAll(".brainbtns")[0]) || val == 0) {
-        showui();
-        clear();
-        document.getElementById("title").innerHTML = "Brain"
-        importmesh("limbic_system.glb", new BABYLON.Vector3(-2, 1, -60), new BABYLON.Vector3(-5, 2, -2), 50, new BABYLON.Vector3(0.35, 0.35, 0.35));
-        camera.upperRadiusLimit = 100;
+export function loadbrain() {
+    updateNavigationHistory("loadbrain()");
+    showui();
+    clear();
+    document.getElementById("title").innerHTML = "Brain"
+    importmesh("limbic_system.glb", new BABYLON.Vector3(-2, 1, -60), new BABYLON.Vector3(-5, 2, -2), 50, new BABYLON.Vector3(0.35, 0.35, 0.35));
+    camera.upperRadiusLimit = 100;
 
-            showbtn(document.getElementById("backHuman"));
-        showbtn(document.getElementById("exterior"));
-        showbtn(document.getElementById("panelbtn"));
-        hidebtn(document.getElementById("backcell"));
-        showbtn(document.getElementById("neuron"));
-    }
+    showbtn(document.getElementById("backHuman"));
+    showbtn(document.getElementById("exterior"));
+    showbtn(document.getElementById("panelbtn"));
+    hidebtn(document.getElementById("backcell"));
+    showbtn(document.getElementById("neuron"));
 }
 
 export function showExteriorBrain() {
@@ -82,7 +80,7 @@ export function showExteriorBrain() {
     }
     else {
         document.getElementById("exterior").textContent = "Show Exterior View";
-        loadbrain(0);
+        loadbrain();
     }
 }
 
@@ -147,8 +145,8 @@ export function loadspine() {
     importmesh("nervoussystem.glb", new BABYLON.Vector3(10, 1, 10), new BABYLON.Vector3(0, 5, 0), null, new BABYLON.Vector3(0.13, 0.13, 0.13));
     camera.upperRadiusLimit = 100;
     
-    createSphereBtn(0, 7.5, 2.5, () => createBasicPopup("Brain","The brain is the central organ of the nervous system. It is a highly complex organ that is responsible for controlling and regulating all bodily functions, including movement, sensation, thought, memory, and emotion.", document.querySelectorAll(".brainbtns")), 0.7);
-    createSphereBtn(-0.36, 2.21, 0.51, () => createBasicPopup("Spinal Cord","The pathway for nerve impulses to travel from the brain to the body and vice versa.", document.querySelectorAll(".spinebtns")), 0.7);
+    createSphereBtn(0, 7.5, 2.5, () => createBasicPopup("Brain","The brain is the central organ of the nervous system. It is a highly complex organ that is responsible for controlling and regulating all bodily functions, including movement, sensation, thought, memory, and emotion.", () => loadbrain()), 0.7);
+    createSphereBtn(-0.36, 2.21, 0.51, () => createBasicPopup("Spinal Cord","The pathway for nerve impulses to travel from the brain to the body and vice versa.", () => loadspine()), 0.7);
     
     document.getElementById('backHuman').style.display = 'block';
 }

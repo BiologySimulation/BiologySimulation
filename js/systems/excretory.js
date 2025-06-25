@@ -10,7 +10,7 @@ export function loadexcretory() {
     document.getElementById('title').innerHTML = "Excretory System";
     importmesh("exretory_system.glb", new BABYLON.Vector3(0, 0, -15), null, null, new BABYLON.Vector3(0.01, 0.01, 0.01));
     
-    createSphereBtn(1.3,5,-0.6,function(){createBasicPopup("Kidney","The kidneys, each about the size of a human fist, are bean-shaped organs located on either side of the spine in the lower back. They filter waste and excess substances from the blood, regulating electrolyte balance, blood pressure, and producing urine for waste elimination.", document.querySelectorAll(".kidneybtns"));});
+    createSphereBtn(1.3,5,-0.6,function(){createBasicPopup("Kidney","The kidneys, each about the size of a human fist, are bean-shaped organs located on either side of the spine in the lower back. They filter waste and excess substances from the blood, regulating electrolyte balance, blood pressure, and producing urine for waste elimination.", () => loadkidney(1));});
     createSphereBtn(0.98,0,-0.25,function(){createBasicPopup("Ureter","The channels through which the urine formed in the kidney enters the urinary bladder.");});
     createSphereBtn(-0.04,-4.42,-1.29,function(){createBasicPopup("Urinary Bladder","The urinary bladder is made up of several layers of tissues and lined with transitional epithelium, which can relax and contract to accommodate urine. There are sphincter muscles between the bladder and the urethra that control urination.");});
     createSphereBtn(0.07,-5.27,-0.43,function(){createBasicPopup("Urethra","The tube through which urine leaves the body.");});        
@@ -50,8 +50,8 @@ export function loadkidney() {
     document.getElementById('backHuman').style.display = 'block';
 }
 
-export function loadnephron(val = 1) {
-    updateNavigationHistory(`loadnephron(${val})`);
+export function loadnephron() {
+    updateNavigationHistory("loadnephron()");
     clear();
     clearbtns()
     showbtn(document.getElementById("backHuman"));
