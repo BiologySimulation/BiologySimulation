@@ -39,7 +39,7 @@ export function clearbtns() {
     // Set visibility to 0 for every <button> element in the document
     const allButtons = document.querySelectorAll('button');
     allButtons.forEach(btn => {
-        if (btn.id != "backbtn") {
+        if (btn.id != "backbtn" && btn.id != "toggle-chatbox") {
             btn.style.visibility = 'hidden';
         }
     });
