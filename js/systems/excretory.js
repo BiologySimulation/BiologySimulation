@@ -23,6 +23,7 @@ export function loadkidney() {
     clear();
     clearbtns()
     showbtn(document.getElementById("backHuman"));
+    showbtn(document.getElementById("kidney2dmodelbtn"));
     document.getElementById('title').innerHTML = "Kidney";
     importmesh("kidney.glb", new BABYLON.Vector3(0, 0, -0.1), null, null, new BABYLON.Vector3(0.005, 0.005, 0.005));
     
@@ -47,7 +48,6 @@ export function loadkidney() {
         createBasicPopup("Renal Pelvis", "The inner region of the kidney that collects urine as it is produced, and sends it through the ureters to the bladder.");
     }, 0.1);
     
-    document.getElementById('backHuman').style.display = 'block';
 }
 
 export function loadnephron() {
@@ -63,9 +63,6 @@ export function loadnephron() {
 }
 
 export function kidney2dmodel() {
-    clear();
-    clearbtns()
-    showbtn(document.getElementById("backHuman"));
     const kidneyImg = new Image();
     kidneyImg.src = 'images/kidney.png';
     kidneyImg.style.width = '80%';

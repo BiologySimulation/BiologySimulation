@@ -31,30 +31,6 @@ Object.assign(window, {
     ...utils,
 });
 
-// Button factory utility for dynamic UI
-export function createButton({ 
-    id, 
-    text, 
-    onClick, 
-    className = "mui-btn mui-btn--primary largeBtn", 
-    style = "", 
-    parent = document.body, 
-    title = "" 
-}) {
-    // Remove existing button with same id
-    const oldBtn = document.getElementById(id);
-    if (oldBtn) oldBtn.remove();
-    const btn = document.createElement("button");
-    btn.id = id;
-    btn.textContent = text;
-    btn.className = className;
-    btn.style = style;
-    if (title) btn.title = title;
-    btn.onclick = onClick;
-    parent.appendChild(btn);
-    return btn;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     human.loadhuman();
     engine.runRenderLoop(function () {

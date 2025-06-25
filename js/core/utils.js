@@ -1,5 +1,7 @@
 import { scene, camera, engine } from "./babylon-setup.js";
 
+const PERMANENT_BUTTONS = ["send-button", "toggle-chatbox", "backbtn"];
+
 export let state = {
     meshes: [],
     buttons: [],
@@ -39,7 +41,7 @@ export function clearbtns() {
     // Set visibility to 0 for every <button> element in the document
     const allButtons = document.querySelectorAll('button');
     allButtons.forEach(btn => {
-        if (btn.id != "backbtn" && btn.id != "toggle-chatbox") {
+        if (!PERMANENT_BUTTONS.includes(btn.id)) {
             btn.style.visibility = 'hidden';
         }
     });
@@ -545,4 +547,28 @@ export function btncheck(mem) {
     else {
         backHuman.classList.add("animbtn");
     }
+}
+
+// Button factory utility for dynamic UI
+export function createButton({ 
+    id, 
+    text, 
+    onClick, 
+    className = "mui-btn mui-btn--primary largeBtn", 
+    style = "", 
+    parent = document.body, 
+    title = "" 
+}) {
+    // Remove existing button with same id
+    const oldBtn = document.getElementById(id);
+    if (oldBtn) oldBtn.remove();
+    const btn = document.createElement("button");
+    btn.id = id;
+    btn.textContent = text;
+    btn.className = className;
+    btn.style = style;
+    if (title) btn.title = title;
+    btn.onclick = onClick;
+    parent.appendChild(btn);
+    return btn;
 }

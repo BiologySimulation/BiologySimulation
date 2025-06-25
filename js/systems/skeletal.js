@@ -35,7 +35,7 @@ export function loadskeletal() {
 
     // Create sphere buttons for each bone
     createSphereBtn(0, 7, -0.51, () => {
-        createImagePopUp("Skull", "Protects the brain and houses sensory organs like the eyes and ears. Click the button to learn more.", "images/skullpicture.jpg", window.innerWidth * 0.6, window.innerHeight * 0.4, () => loadskull(), () => loadPanel(skullpanel.id));
+        createImagePopUp("Skull", "Protects the brain and houses sensory organs like the eyes and ears. Click the button to learn more.", "images/skullpicture.jpg", window.innerWidth * 0.6, window.innerHeight * 0.4, () => loadskull(), "3D Model", () => loadPanel(skullpanel.id));
     });
     
     createSphereBtn(0, 3, 0.8, () => {
