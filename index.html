@@ -20,17 +20,25 @@
     <link href="static/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="static/slide-in-pane_style.css">
     <link rel="stylesheet" href="static/slide-in-panel_css_demo.css">
+    <script src="https://code.jquery.com/pep/0.4.3/pep.js"></script>
     <script src="js/babylon.js"></script>
+    <script src="js/babylon.gui.js"></script>
     <script src="js/babylonjs.loaders.min.js"></script>
+    <script src="js/tween.umd.js"></script>
     <script src="js/mui.js"></script>
     <script src="js/sweetalert2.all.min.js"></script>
     <script src="js/stats.js"></script>
   </head>
   <body>
     <div id="bottom-right-image"></div>
+    <div id="babylonjsLoadingDiv" style="display: none;">
+      <img src="images/favicon.png" alt="Loading..." class="loading-icon">
+      <div class="loading-text">Loading...</div>
+    </div>
     <h1 id="title">Human</h1>
-    <button onclick = "loadhuman(1)" id="backHuman" class="mui-btn mui-btn--primary largeBtn">Human Anatomy</button>
-    <button onclick = "loadexretory(0)" id="backExretory" class="mui-btn mui-btn--primary largeBtn">Go Back to Exretory System</button>
+    <div id="button-container"></div>
+    <button onclick = "loadhuman()" id="backHuman" class="mui-btn mui-btn--primary largeBtn">Human Anatomy</button>
+    <button onclick = "loadexcretory(0)" id="backExretory" class="mui-btn mui-btn--primary largeBtn">Go Back to Exretory System</button>
     <button onclick = "loadkidney(0)" id="backKidney" class="mui-btn mui-btn--primary largeBtn">Go Back to Kidney</button>
     <button onclick = "showExteriorBrain()" style="display: none;" id="exterior" class="mui-btn mui-btn--primary largeBtn">Show Exterior View</button>
     <button onclick="loadcell()" id="backcell" class="mui-btn mui-btn--primary largeBtn">Cellular Structure</button>
@@ -40,48 +48,13 @@
     <button onclick="openchannel()" style="display: none;" id="channeltransport" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Channel Transport">4</button>
     <button onclick="cholestrolclicked()" style="display: none;" id="cholestrol" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Cholesterol">5</button>
     <button onclick="receptorproteinclicked()" style="display: none;" id="receptorprotein" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Receptor Protein">6</button>
-    <button onclick="loadmitochondria(1)" id="mitosmlbtn" style="display: none;" class="mui-btn mui-btn--primary mitosmlbtns pulse">3d Model</button>
-    <button onclick="loadbrain(1)" id="brainbtn" style="display: none;" class="mui-btn mui-btn--primary brainbtns pulse">3d Model</button>
-    <button onclick="loadeye()" id="eyebtn" style="display: none;" class="mui-btn mui-btn--primary eyebtns largeBtn pulse">3d Model</button>
-    <button onclick="loadgolgi(1)" id="golgismlbtn" style="display: none;" class="mui-btn mui-btn--primary golgismlbtns pulse">3d Model</button>
-    <button onclick="loadspinalcord(1)" id="cordbtn" style="display: none;" class="mui-btn mui-btn--primary cordbtns pulse">3d Model</button>
-    <button onclick="loadendocrine1()" id="endocrine1btn" style="display: none;" class="mui-btn mui-btn--primary endocrine1btns pulse">3d Model</button>
-    <button onclick="loadrougher()" id="roughersmlbtn" style="display: none;" class="mui-btn mui-btn--primary roughersmlbtns pulse">RER 3d Model</button>
-    <button onclick="loadsmoother()" id="smoothersmlbtn" style="display: none;" class="mui-btn mui-btn--primary smoothersmlbtns pulse">SER 3d Model</button>
     <button onclick = "loadpanel()" style="display: none;" id="panelbtn" class="mui-btn mui-btn--primary largeBtn pulse">Brain Information</button>
     <button onclick = "loadribopanel()" style="display: none;" id="ribopanelbtn" class="mui-btn mui-btn--primary largeBtn pulse">Ribosome Info</button>
     <button onclick = "loadneuron(1)" style="display: none;" id="neuron" class="mui-btn mui-btn--primary largeBtn pulse">Show Neuron</button>
     <button onclick = "loadETC(1)" style="display: no8ne;" id="ETC" class="mui-btn mui-btn--primary largeBtn pulse">Show Electron Transport Chain</button>
-    <button onclick="loadheart(1)" id="heartbtn" style="display: none;" class="mui-btn mui-btn--primary heartbtns pulse">3d Model</button>
-    <button onclick="loadkidney(1)" id="kidneybtn" style="display: none;" class="mui-btn mui-btn--primary kidneybtns pulse">3d Model</button>
-    <button onclick="loadnephron(1)" id="nephronbtn" style="display: none;" class="mui-btn mui-btn--primary nephronbtns pulse">Show Nepheron</button>
-    <button onclick="loadexretory(1)" id="exretorybtn" style="display: none;" class="mui-btn mui-btn--primary exretorybtns pulse">3d Model</button>
+    <button onclick="loadnephron()" id="nephronbtn" style="display: none;" class="mui-btn mui-btn--primary nephronbtns pulse">Show Nepheron</button>
     <button onclick="kidney2dmodel()" id="kidney2dmodelbtn" style="display: none;" class="mui-btn mui-btn--primary largeBtn pulse">Kidney 2d Model</button>
-    <button onclick="loadstomach(1)" id="stomachbtn" style="display: none;" class="mui-btn mui-btn--primary stomachbtns pulse">3d Model</button>
-    <button onclick="loaddigestive(1)" id="digestivebtn" style="display: none;" class="mui-btn mui-btn--primary digestivebtns pulse">3d Model</button>
-    <button onclick="loadcirculatory(1)" id="circulatorybtns" style="display: none;" class="mui-btn mui-btn--primary circulatorybtns">THIS LOADS IN CIRCULATORY SYSTEM VIA SEARCH</button>
-    <button onclick="loadlymphatic(1)" id="lymphbtns" style="display: none;" class="mui-btn mui-btn--primary lymphbtns">THIS LOADS IN LYMPHATIC SYSTEM VIA SEARCH</button>
-    <button onclick="loadendocrine(1)" id="endocrinebtns" style="display: none;" class="mui-btn mui-btn--primary endocrinebtns">THIS LOADS IN ENDOCRINE SYSTEM VIA SEARCH</button>
-    <button onclick="loadmuscular(1)" id="muscularbtns" style="display: none;" class="mui-btn mui-btn--primary muscularbtns">THIS LOADS IN MUSCULAR SYSTEM VIA SEARCH</button>
-    <button onclick="loadmuscular(1)" id="muscularbtns" style="display: none;" class="mui-btn mui-btn--primary muscularbtns">THIS LOADS IN MUSCULAR SYSTEM VIA SEARCH</button>
-    <button onclick="loadbronchi(1)" id="bronchibtn" style="display: none;" class="mui-btn mui-btn--primary bronchibtns pulse">3d Model</button>
-    <button onclick="loadesophagus(1)" id="esophagusbtn" style="display: none;" class="mui-btn mui-btn--primary esophagusbtns pulse">3d Model</button>
-    <button onclick="loadliver(1)" id="liverbtn" style="display: none;" class="mui-btn mui-btn--primary liverbtns pulse">3d Model</button>
-    <button onclick="loadintestine(1)" id="intestinebtn" style="display: none;" class="mui-btn mui-btn--primary intestinebtns pulse">3d Model</button>
-    <button onclick="loadcolon(1)" id="colonbtn" style="display: none;" class="mui-btn mui-btn--primary colonbtns pulse">3d Model</button>
-    <button onclick="loadpancreas(1)" id="pancreasbtn" style="display: none;" class="mui-btn mui-btn--primary pancreasbtns pulse">3d Model</button>
-    <button onclick="loadlungs(1)" id="lungbtn" style="display: none;" class="mui-btn mui-btn--primary lungbtns pulse">3d Model</button>
-    <button onclick="loadlungcs(0)" id="lungcsbtn" style="display: none;" class="mui-btn mui-btn--primary lungbtns largeBtn pulse">3d Model of Cross Section</button>
-    <button onclick="loadspine(1)" id="spinebtn" style="display: none;" class="mui-btn mui-btn--primary spinebtns pulse">3d Model</button>
-    <button onclick="loadrespiratory(1)" id="respbtn" style="display: none;" class="mui-btn mui-btn--primary respbtns">Show Lungs and Diaphragm</button>
-    <button onclick="loadspleen(1)" id="spleenbtn" style="display: none;" class="mui-btn mui-btn--primary spleenbtns pulse">3d Model</button>
-    <button onclick="loadrespinsitu(1)" id="respinsitubtn" style="display: none;" class="mui-btn mui-btn--primary respinsitubtns">LOADS IN RESPIRATORY VIA SEARCH</button>
-    <button onclick="loaddigestiveinsitu(1)" id="digestiveinsitubtn" style="display: none;" class="mui-btn mui-btn--primary digestiveinsitubtns">THIS LOADS IN DIGESTIVE SYSTEM VIA SEARCH</button>
-    <button onclick="loadskull(1)" id="skullbtn" style="display: none;" class="mui-btn mui-btn--primary skullbtns pulse">3d Model</button>
-    <button onclick="loadskin(1)" id="skinbtn" style="display: none;" class="mui-btn mui-btn--primary skinbtns largeBtn">THIS LOADS IN INTEGUMENTARY SYSTEM VIA SERACH</button>
-    <button onclick="loadtrachea(1)" id="tracheabtn" style="display: none;" class="mui-btn mui-btn--primary tracheabtns pulse">3d Model</button>
-    <button onclick="loaddiaphragmonly(0)" id="diaphragmbtn" style="display: none;" class="mui-btn mui-btn--primary diaphragmbtns largeBtn pulse">3d Model</button>
-    <button onclick="loadeyecs(0)" id="eyecsbtn" style="display: none;" class="mui-btn mui-btn--primary largeBtn pulse">Eye Cross Section</button>
+    <button onclick="loadeyecs()" id="eyecsbtn" style="display: none;" class="mui-btn mui-btn--primary largeBtn pulse">Eye Cross Section</button>
     <button onclick="backPage()" id="backbtn">
       <img src="images/back.png" alt="Go Back">
     </button>
@@ -90,29 +63,26 @@
     <button onclick="stromaclicked()" style="display: none;" id="stroma" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">3</button>
     <button onclick="descementclicked()" style="display: none;" id="descement" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">4</button>
     <button onclick="endotheliumclicked()" style="display: none;" id="endothelium" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">5</button>
-    <button onclick="loadearcs(0)" id="earcsbtn" style="display: none;" class="mui-btn mui-btn--primary earbtns largeBtn pulse">Ear Cross Section</button>
-    <button onclick="loadear(0)" id="earbtn" style="display: none;" class="mui-btn mui-btn--primary earbtns largeBtn pulse">Ear 3D Model</button>
+    <button onclick="loadearcs()" id="earcsbtn" style="display: none;" class="mui-btn mui-btn--primary earbtns largeBtn pulse">Ear Cross Section</button>
     <button onclick="membraneclicked()" style="display: none;" id="bowman" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">1</button>
     <button onclick="phosphoclicked()" style="display: none;" id="epithelium" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">2</button>
     <button onclick="phosphoclicked2()" style="display: none;" id="stroma" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">3</button>
     <button onclick="phosphoclicked2()" style="display: none;" id="descement" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">4</button>
     <button onclick="openchannel()" style="display: none;" id="endothelium" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">5</button>
-    <button onclick="loaddna(0)" style="display: none;" id="dna" class="mui-btn mui-btn--primary mui-btn--primary largeBtn dnabtns pulse">3D Model</button>
+    <button onclick="loaddna()" style="display: none;" id="dna" class="mui-btn mui-btn--primary mui-btn--primary largeBtn dnabtns pulse">3D Model</button>
       
       
       <div class="topnav" id = "tabBtn" style="display: none;">
-        <button class="tablinks largeBtn" onclick="loadnervous(0)">Nervous</button>
+        <button class="tablinks largeBtn" onclick="loadnervous()">Nervous</button>
         <button class="tablinks largeBtn" onclick="loadskeletal(0)">Skeletal</button>
-        <button class="tablinks largeBtn" onclick="loadexretory(0)">Excretory</button>
-        <button class="tablinks largeBtn" onclick="loadrespinsitu(0)">Respiratory</button>
-        <button class
-        
-        ="tablinks largeBtn" onclick="loaddigestiveinsitu(0)">Digestive</button>
+        <button class="tablinks largeBtn" onclick="loadexcretory(0)">Excretory</button>
+        <button class="tablinks largeBtn" onclick="loadrespinsitu()">Respiratory</button>
+        <button class="tablinks largeBtn" onclick="loaddigestiveinsitu(0)">Digestive</button>
         <button class="tablinks largeBtn" onclick="loadcirculatory(0)">Circulatory</button>
         <button class="tablinks largeBtn" onclick="loadlymphatic(0)">Lymphatic</button>
         <button class="tablinks largeBtn" onclick="loadmuscular(0)">Muscular</button>
         <button class="tablinks largeBtn" onclick="loadendocrine(0)">Endocrine</button>
-        <button class="tablinks largeBtn" onclick="loadskin(0)">Integumentary</button>
+        <button class="tablinks largeBtn" onclick="loadskin()">Integumentary</button>
 
       </div>
     </div>
@@ -244,7 +214,7 @@
         }
         
       </script>
-    <script src="js/script.js"></script>
+    <script src="js/instructions.js"></script>
     <script>
       const fpPromise = import('https://fpjscdn.net/v3/cJJ0xKkWM7dj4CmYHcsh')
     .then(FingerprintJS => FingerprintJS.load())
@@ -265,7 +235,7 @@
     <div class="toggle"><ion-icon name="body-outline"></ion-icon><span class="ttext">Organ Systems</span></div>
     <li style="--i:0;">
       <div class="tooltip">
-        <a href="#" onclick="loadnervous(0)"><img src="./images/nervous.png" alt="Nervous system" style="width: 50px; height: 50px;"></a>
+        <a href="#" onclick="loadnervous()"><img src="./images/nervous.png" alt="Nervous system" style="width: 50px; height: 50px;"></a>
         <span class="tooltiptext">Nervous System</span>
       </div>
     </li>
@@ -277,13 +247,13 @@
     </li>
     <li style="--i:2;">
       <div class="tooltip">
-        <a href="#" onclick="loadexretory(0)"><img src="./images/excretory.png" alt="Excretory system" style="width: 50px; height: 50px;"></a>
+        <a href="#" onclick="loadexcretory(0)"><img src="./images/excretory.png" alt="Excretory system" style="width: 50px; height: 50px;"></a>
         <span class="tooltiptext">Excretory System</span>
       </div>
     </li>
     <li style="--i:3;">
       <div class="tooltip">
-        <a href="#" onclick="loadrespinsitu(0)"><img src="./images/respiratory.png" alt="Respiratory system" style="width: 40px; height: 40px;"></a>
+        <a href="#" onclick="loadrespinsitu()"><img src="./images/respiratory.png" alt="Respiratory system" style="width: 40px; height: 40px;"></a>
         <span class="tooltiptext">Respiratory System</span>
       </div>
     </li>
@@ -320,7 +290,7 @@
     </li>
     <li style="--i:9;">
       <div class="tooltip">
-        <a href="#" onclick="loadskin(0)"><img src="./images/skin.png" alt="Integumentary system" style="width: 40px; height: 40px;"></a>
+        <a href="#" onclick="loadskin()"><img src="./images/skin.png" alt="Integumentary system" style="width: 40px; height: 40px;"></a>
         <span class="tooltiptext">Integumentary System</span>
       </div>
     </li>
@@ -336,7 +306,8 @@
     menu.classList.toggle('active')
   }
 </script>
-<script src="js/instructions.js"></script>
-</body>
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="js/main.js"></script>
+    <div id="evolution-buttons-container"></div>
+  </body>
 </html>

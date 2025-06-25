@@ -1,0 +1,67 @@
+import { engine, scene } from './core/babylon-setup.js';
+import * as utils from './core/utils.js';
+
+import * as cell from './systems/cell.js';
+import * as skeletal from './systems/skeletal.js';
+import * as human from './systems/human.js';
+import * as nervous from './systems/nervous.js';
+import * as cardiovascular from './systems/cardiovascular.js';
+import * as digestive from './systems/digestive.js';
+import * as respiratory from './systems/respiratory.js';
+import * as lymphatic from './systems/lymphatic.js';
+import * as endocrine from './systems/endocrine.js';
+import * as integumentary from './systems/integumentary.js';
+import * as muscular from './systems/muscular.js';
+import * as excretory from './systems/excretory.js';
+
+// Assign all imported functions to the global window object
+Object.assign(window, {
+    ...cell,
+    ...skeletal,
+    ...human,
+    ...nervous,
+    ...cardiovascular,
+    ...digestive,
+    ...respiratory,
+    ...lymphatic,
+    ...endocrine,
+    ...integumentary,
+    ...muscular,
+    ...excretory,
+    ...utils,
+});
+
+// Button factory utility for dynamic UI
+export function createButton({ 
+    id, 
+    text, 
+    onClick, 
+    className = "mui-btn mui-btn--primary largeBtn", 
+    style = "", 
+    parent = document.body, 
+    title = "" 
+}) {
+    // Remove existing button with same id
+    const oldBtn = document.getElementById(id);
+    if (oldBtn) oldBtn.remove();
+    const btn = document.createElement("button");
+    btn.id = id;
+    btn.textContent = text;
+    btn.className = className;
+    btn.style = style;
+    if (title) btn.title = title;
+    btn.onclick = onClick;
+    parent.appendChild(btn);
+    return btn;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    human.loadhuman();
+    engine.runRenderLoop(function () {
+        scene.render();
+    });
+});
+
+window.addEventListener("resize", function () {
+    engine.resize();
+}); 
