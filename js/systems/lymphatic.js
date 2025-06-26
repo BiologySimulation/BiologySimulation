@@ -13,7 +13,7 @@ export function loadlymphatic() {
     showbtn(document.getElementById("backHuman"));
 
         document.getElementById("title").innerHTML = "Lymphatic System";
-        importmesh("lymphatic_system.glb", new BABYLON.Vector3(0, 0.5, 80), new BABYLON.Vector3(0, 0, -8), 23, new BABYLON.Vector3(0.01, 0.01, 0.01));
+        importmesh("lymphatic_system.glb", new BABYLON.Vector3(2.392304532386481, 3.477906245954496, -32.291721596806866), new BABYLON.Vector3(0.05532432824205791, 1.4542896055359071, -6.525469432946064), 23, new BABYLON.Vector3(0.01, 0.01, 0.01));
         
         // Create sphere buttons for each lymphatic component with exact coordinates from script.js
         createSphereBtn(0.7830194453121005, 3.544277965793885, -7.439955816834036, () => {

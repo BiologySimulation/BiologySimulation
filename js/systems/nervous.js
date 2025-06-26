@@ -1,6 +1,6 @@
 import { camera } from '../core/babylon-setup.js';
 import { updateNavigationHistory } from '../core/utils.js';
-import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup } from '../core/utils.js';
+import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, createPanel } from '../core/utils.js';
 
 export function loadnervous() {
     updateNavigationHistory("loadnervous()");
@@ -9,13 +9,20 @@ export function loadnervous() {
     showbtn(document.getElementById("backHuman"));
     document.getElementById("title").innerHTML = "Nervous System"
     clear();
-    importmesh("nervous_system.glb", null, new BABYLON.Vector3(0.05740795922190678,7.15830432454763,0.9948979818070001), null, new BABYLON.Vector3(8, 8, 8));
+    importmesh("nervous_system.glb", new BABYLON.Vector3(-0.5497548092807188, 11.712026266553464, -21.876621326031675), new BABYLON.Vector3(0.05740795922190678,7.15830432454763,0.9948979818070001), null, new BABYLON.Vector3(8, 8, 8));
     createSphereBtn(-0.0847792182819817,13.727592170977577,-0.13707866476222108, function () {
        createBasicPopup("Central Nervous System (CNS)", "The central nervous system (CNS) comprises the brain and spinal cord, serving as the primary control center for processing sensory information, generating thoughts, emotions, and memories, and coordinating voluntary and involuntary actions throughout the body. It interprets incoming data and sends out commands to the peripheral nervous system to execute responses. ", () => loadspine());
     });
     createSphereBtn(-2.117950967884778,9.656626590025594,0.807392259406166, function () {
         createBasicPopup("Peripheral Nervous System (PNS)", "The peripheral nervous system (PNS) consists of all the nerves outside the brain and spinal cord, including cranial and spinal nerves, and is responsible for transmitting sensory information to the CNS and carrying out its motor commands. It connects the CNS to muscles, glands, and sensory receptors, facilitating communication between the brain and the body's extremities and organs.");
      });
+
+    createPanel(
+        "brainpanel",
+        "Brain Divisions",
+        "brainclose",
+        "The brain is split into four main parts: the cerebrum, the diencephalon, the brainstem, and the cerebellum. The cerebrum, is composed of superficial gray matter and deep white matter. The gray matter makes up the cerebral cortex, which is further subdivided into the 4 brain lobes. These are mainly responsible for cognitive abilities and sensory information. White matter helps the body process information. The diencephalon consists of the thalamus, hypothalumus, and pituitary gland. It's responsible for routing sensory info and for many involuntary body functions. The brain stem controls essential functions such as breathing and heart rate, and conencts to the spine. The cerebellum is responsible for balance and coordination. It's important to remember that many of these brain parts are further subdivided, and their functions and physical structures can sometimes overlap with each other. <br></br> Notable structures seen in this image include: </br><br>- The pituitary gland, also known as the 'master gland', which controls hormonal balances in the body.  <br>- The amygdala, which controls the emotion of fear and influences aggression, reward-based learning, unconscious memory, social understanding, parenting emotions, memory-emotion connections, and addiction behaviors. <br>- The hippocampus, part of the brain's limbic system, is vital for memory, learning, and emotions. It stores short-term memories and facilitates their conversion into long-term memory.  Key functions include storing declarative facts, transferring short-term to long-term memory (assisted by sleep), and aiding spatial navigation and mental mapping. <br>- The hypothalamus, deep within the brain, links the endocrine and nervous systems to maintain body stability (homeostasis). It interprets chemical signals from the brain and peripheral nerves, regulating vital functions like temperature, blood pressure, hunger, thirst, and mood. It also influences sex drive and sleep, controlling these processes through the autonomic nervous system and hormone regulation. </br>",
+    );
     showbtn(backHuman);
 }
 
@@ -29,8 +36,7 @@ export function loadbrain() {
 
     showbtn(document.getElementById("backHuman"));
     showbtn(document.getElementById("exterior"));
-    showbtn(document.getElementById("panelbtn"));
-    hidebtn(document.getElementById("backcell"));
+    showbtn(document.getElementById("brainpanelbtn"));
     showbtn(document.getElementById("neuron"));
 }
 
@@ -38,8 +44,6 @@ export function showExteriorBrain() {
     updateNavigationHistory("showExteriorBrain()");
     if (document.getElementById("exterior").textContent == "Show Exterior View") {
         document.getElementById("exterior").textContent = "Hide Exterior View";
-        document.getElementById("backHuman").setAttribute("style", "opacity: 0.6 !important; cursor: not-allowed !important; pointer-events: none;");
-        document.getElementById("neuron").setAttribute("style", "opacity: 0.6 !important; cursor: not-allowed !important; pointer-events: none;");
         document.getElementById("neuron").textContent = "Show Neuron";
         document.getElementById("title").innerHTML = "Brain (Exterior)"
         clear();

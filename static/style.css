@@ -537,7 +537,7 @@ img {
     z-index: 9999 !important;
 }
 
-#panelbtn {
+#brainpanelbtn {
     right: 5vh;
     top: 30vh;
     width: 15%;
@@ -567,7 +567,7 @@ img {
 
 #neuron {
     left: 5vh;
-    top: 43vh;
+    top: 46vh;
 }
 #ETC {
     left: 5vh;
@@ -1098,8 +1098,8 @@ img {
 
 #toggle-chatbox {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 1.85%;
+  right: 1.85%;
   background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Gradient for toggle button */
   color: white;
   padding: 15px 25px;

@@ -79,7 +79,6 @@ export function loadlungcs() {
 }
 
 export function loaddiaphragm() {
-    updateNavigationHistory("loaddiaphragm()");
     clear();
     clearbtns();
     showbtn(document.getElementById("backHuman"));

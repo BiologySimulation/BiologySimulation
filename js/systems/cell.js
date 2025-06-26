@@ -150,7 +150,7 @@ export function membraneclicked() {
     document.getElementById("phospho1").onclick = phosphoclicked;
     document.getElementById("phospho2").textContent = "Double Phospholipid";
     document.getElementById("phospho2").onclick = phosphoclicked2;
-    importmesh("cell_membrane.glb", new BABYLON.Vector3(0, 0, 0));
+    importmesh("cell_membrane.glb", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(5.138798059509928, -2.55476766845, -4.7430779286881455), 20);
     document.getElementById("title").innerHTML = "Cell Membrane";
     document.getElementById('backHuman').style.display = 'none';
     document.getElementById('backcell').style.display = 'block';
@@ -161,7 +161,7 @@ export function phosphoclicked() {
     clear();
     clearbtns();
     showbtn(document.getElementById("backcell"));
-    importmesh("phospho_sama.glb", new BABYLON.Vector3(0, 0, 0));
+    importmesh("phospho_sama.glb", new BABYLON.Vector3(18.165862883491645, 5.896657820488788, -1.885683407535689), new BABYLON.Vector3(0.15086973704248052, 0.27308798455651484, -0.6523204123200439));
     document.getElementById("title").innerHTML = "Phospholipid";
     document.getElementById('backHuman').style.display = 'none';
     document.getElementById('backcell').style.display = 'block';
@@ -189,7 +189,7 @@ export function phosphoclicked2() {
     document.getElementById("phospho1").onclick = phosphoclicked;
     document.getElementById("phospho2").textContent = "Phospholipid Bilayer";
     document.getElementById("phospho2").onclick = membraneclicked;
-    importmesh("phospholipid.glb", new BABYLON.Vector3(0, 0, 0), null, null, new BABYLON.Vector3(0.01, 0.01, 0.01));
+    importmesh("phospholipid.glb", new BABYLON.Vector3(-2.1062699042840367e-14, 5.26434436600806e-16, 8.597326787892316), new BABYLON.Vector3(2.0678336313738668, 0.0545294321544116, -0.22056811927664288), null, new BABYLON.Vector3(0.01, 0.01, 0.01));
     document.getElementById("title").innerHTML = "2 Phospholipids";
     document.getElementById('backHuman').style.display = 'none';
     document.getElementById('backcell').style.display = 'block';

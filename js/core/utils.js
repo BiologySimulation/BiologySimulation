@@ -343,7 +343,7 @@ export function createBasicPopup(title, description, loadingFunction = null, mod
  * @param btn btn that opens the panel -- needed only if btn needs to be hidden upon clicking
  * @param show whether to show or hide the button when panel is closed
  */
-export function createPanel(className, titleText, classNameClose, textInnerHTML, btn = null, show) {
+export function createPanel(className, titleText, classNameClose, textInnerHTML, btn = null, show = false) {
     // new Promise((resolve) => {
     // Create the main div
     const panel = document.createElement("div");
@@ -388,10 +388,12 @@ export function createPanel(className, titleText, classNameClose, textInnerHTML,
 
     document.querySelector(`.${classNameClose}`).onclick = () => {
         removeClass(panel, "cd-panel--is-visible");
-        if (show) {
-            showbtn(btn); // dont want to see the info button when panel is closed, so hide this btn on click of the close btn
-        } else {
-            hidebtn(btn);
+        if(btn != null) {
+            if (show) {
+                showbtn(btn); // dont want to see the info button when panel is closed, so hide this btn on click of the close btn
+            } else {
+                hidebtn(btn);
+            }
         }
     };
     // resolve(panel);
