@@ -202,35 +202,6 @@ input:focus, select:focus, textarea:focus {
   z-index: 99999999;
 }
 
-/* Button Styles */
-.bronchibtns, .esophagusbtns, .liverbtns, .intestinebtns,
-.mitosmlbtns, .golgismlbtns, .roughersmlbtns, .smoothersmlbtns,
-.brainbtns, .digestivebtns, .skullbtns, .heartbtns, .kidneybtns,
-.cordbtns, .endocrine1btns {
-  z-index: 99999999;
-  font-family: 'Roboto', sans-serif;
-  font-size: calc(0.65vw + 0.65vh);
-  position: absolute;
-  opacity: 0;
-  transition: var(--transition);
-  border-radius: var(--border-radius);
-  background-color: var(--surface);
-  color: var(--text-primary);
-  padding: 0.75rem 1.5rem;
-  cursor: pointer;
-}
-
-.bronchibtns:hover, .esophagusbtns:hover, .liverbtns:hover,
-.intestinebtns:hover, .mitosmlbtns:hover, .golgismlbtns:hover,
-.roughersmlbtns:hover, .smoothersmlbtns:hover, .brainbtns:hover,
-.digestivebtns:hover, .skullbtns:hover, .heartbtns:hover,
-.kidneybtns:hover, .cordbtns:hover, .endocrine1btns:hover {
-  opacity: 1;
-  background-color: var(--surface-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
 /* Panel Styles */
 .sContent {
   max-width: 90%;
@@ -374,136 +345,6 @@ body {
     z-index: 99999999;
 }
 
-.bronchibtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.esophagusbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.liverbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.intestinebtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.pancreasbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.spleenbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.spinebtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-#spinebtn {
-    left: 80vh;
-    top: 80vh;
-}
-.colonbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.respbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.spleenbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-#spleenbtn {
-    left: 80vh;
-    top: 93vh;
-}
-#bronchibtn {
-    left: 80vh;
-    top: 73vh;
-}
-#esophagusbtn {
-    left: 80vh;
-    top: 73vh;
-}
-#liverbtn {
-    left: 80vh;
-    top: 73vh;
-}
-#respbtn {
-    left: 80vh;
-    top: 73vh;
-}
-#intestinebtn {
-    left: 80vh;
-    top: 73vh;
-}
-#pancreasbtn {
-    left: 80vh;
-    top: 73vh;
-}
-#spleenbtn {
-    left: 80vh;
-    top: 73vh;
-}
-#colonbtn {
-    left: 80vh;
-    top: 73vh;
-}
 #babcanv:hover {
     cursor: move;
     cursor: grab;
@@ -686,105 +527,6 @@ img {
     top: 55vh;
 }
 
-.mitosmlbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-#mitosmlbtn {
-    left: 45vw;
-    top: 80vh;
-}
-
-.golgismlbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-#golgismlbtn {
-    left: 45vw;
-    top: 80vh;
-}
-
-.roughersmlbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-.smoothersmlbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-#roughersmlbtn {
-    left: 45vw;
-    top: 80vh;
-}
-
-#smoothersmlbtn {
-    left: 45vw;
-    top: 80vh;
-}
-
-.brainbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.digestivebtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-#brainbtn {
-    left: 45vw;
-    top: 92vh;
-}
-.skullbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-#skullbtn {
-    left: 45vw;
-    top: 85vh;
-}
-#digestivebtn {
-    left: 45vw;
-    top: 92vh;
-}
 .statsdom {
     position: absolute;
     right: 0px;
@@ -795,7 +537,7 @@ img {
     z-index: 9999 !important;
 }
 
-#panelbtn {
+#brainpanelbtn {
     right: 5vh;
     top: 30vh;
     width: 15%;
@@ -825,95 +567,11 @@ img {
 
 #neuron {
     left: 5vh;
-    top: 43vh;
+    top: 46vh;
 }
 #ETC {
     left: 5vh;
     top: 15vh;
-}
-.heartbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-#heartbtn {
-    left: 80vh;
-    top: 93vh;
-}
-
-.kidneybtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-.cordbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-#cordbtn {
-    left: 80vh;
-    top: 77vh;
-}
-.endocrine1btns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-#endocrine1btn {
-    left: 80vh;
-    top: 77vh;
-}
-#kidneybtn {
-    left: 80vh;
-    top: 77vh;
-}
-
-.nephronbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-#nephronbtn {
-    left: 5vh;
-    top: 20vh;
-}
-
-.exretorybtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
-
-#exretorybtn {
-    left: 80vh;
-    top: 77vh;
 }
 
 #backExretory {
@@ -932,59 +590,12 @@ img {
     left: 5vh;
     top: 14vh;
 }
-.stomachbtns {
-    z-index: 99999999;
-    font-family: "amazon-ember";
-    font-size: calc(0.65vw + 0.65vh);
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.2s !important;
-    border-radius: 6px;
-}
 
-#stomachbtn {
-    left: 80vh;
-    top: 85vh;
-}
-
-#search {
-    top: 2vh;
-    left: 140vh;
-}
-#dropdown {
-    position: relative;
-}
-#searchbox {
-    width: 190%;
-}
-
-#skinbtn {
-    top: 75%;
-    left: 35%;
-}
-.searchContent {
-    z-index: 1;
-    position: absolute;
-}
-#systems {
-    top: 88vh;
-    left: 1800vh;
-}
-#dropdown {
-    position: relative;
-}
-#searchbox {
-    width: 190%;
-}
-
-.searchContent {
-    z-index: 1;
-    position: absolute;
-}
 #exterior {
     left: 5vh;
     top: 38vh;
 }
+
 #backbtn {
     position: absolute;
     left: 3vw;
@@ -1095,10 +706,6 @@ img {
     left: 45vw;
     top: 90vh;
 }
-#dna {
-    left: 45vw;
-    top: 75vh;
-}
 
 #lungcsbtn {
     left: 3vw;
@@ -1111,12 +718,12 @@ img {
 }
 
 .tabset > input[type="radio"] {
-    position: absolute;
-    left: -200vw;
+  position: absolute;
+  left: -200vw;
 }
 
 .tabset .tab-panel {
-    display: none;
+  display: none;
 }
 
 .tabset > input:first-child:checked ~ .tab-panels > .tab-panel:first-child,
@@ -1125,227 +732,228 @@ img {
 .tabset > input:nth-child(7):checked ~ .tab-panels > .tab-panel:nth-child(4),
 .tabset > input:nth-child(9):checked ~ .tab-panels > .tab-panel:nth-child(5),
 .tabset > input:nth-child(11):checked ~ .tab-panels > .tab-panel:nth-child(6) {
-    display: block;
+  display: block;
 }
 
 .tabset > label {
-    position: relative;
-    display: inline-block;
-    padding: 15px 15px 25px;
-    border: 1px solid transparent;
-    border-bottom: 0;
-    cursor: pointer;
-    font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding: 15px 15px 25px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .tabset > label::after {
-    content: "";
-    position: absolute;
-    left: 15px;
-    bottom: 10px;
-    width: 22px;
-    height: 4px;
-    background: #8d8d8d;
+  content: "";
+  position: absolute;
+  left: 15px;
+  bottom: 10px;
+  width: 22px;
+  height: 4px;
+  background: #8d8d8d;
 }
 
 .tabset > label:hover,
 .tabset > input:focus + label,
 .tabset > input:checked + label {
-    color: #06c;
+  color: #06c;
 }
 
 .tabset > label:hover::after,
 .tabset > input:focus + label::after,
 .tabset > input:checked + label::after {
-    background: #06c;
+  background: #06c;
 }
 
 .tabset > input:checked + label {
-    border-color: #ccc;
-    border-bottom: 1px solid #fff;
-    margin-bottom: -1px;
+  border-color: #ccc;
+  border-bottom: 1px solid #fff;
+  margin-bottom: -1px;
 }
 
 .tab-panel {
-    padding: 30px 0;
-    border-top: 1px solid #ccc;
+  padding: 30px 0;
+  border-top: 1px solid #ccc;
 }
 
 .tabset {
-    max-width: 65em;
+  max-width: 65em;
 }
+
 .tooltip {
-    position: relative;
-    display: inline-block;
-    z-index: 10000;
+  position: relative;
+  display: inline-block;
+  z-index: 10000;
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
 
-    bottom: 125%;
-    left: 50%;
-    margin-left: -60px;
-    opacity: 0;
-    transition: opacity 0.3s;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
+  visibility: visible;
+  opacity: 1;
 }
 
 /* Custom rotation for each tooltip */
 .menu li:nth-child(1) .tooltiptext {
-    transform: rotate(300deg); /* No rotation for first tooltip */
+  transform: rotate(300deg); /* No rotation for first tooltip */
 }
 .menu li:nth-child(0) .tooltiptext {
-    transform: rotate(300deg); /* No rotation for first tooltip */
+  transform: rotate(300deg); /* No rotation for first tooltip */
 }
 
 .menu li:nth-child(2) .tooltiptext {
-    transform: rotate(0deg); /* Rotate second tooltip by 10 degrees */
-    transform: translateY(30px);
+  transform: rotate(0deg); /* Rotate second tooltip by 10 degrees */
+  transform: translateY(30px);
 }
 
 .menu li:nth-child(3) .tooltiptext {
-    transform: rotate(-35deg); /* Rotate third tooltip by 20 degrees */
+  transform: rotate(-35deg); /* Rotate third tooltip by 20 degrees */
 }
 
 .menu li:nth-child(4) .tooltiptext {
-    transform: rotate(-70deg); /* Rotate fourth tooltip by -10 degrees */
+  transform: rotate(-70deg); /* Rotate fourth tooltip by -10 degrees */
 }
 
 .menu li:nth-child(5) .tooltiptext {
-    transform: rotate(-110deg); /* Rotate fifth tooltip by -20 degrees */
+  transform: rotate(-110deg); /* Rotate fifth tooltip by -20 degrees */
 }
 .menu li:nth-child(6) .tooltiptext {
-    transform: rotate(-145deg); /* Rotate fifth tooltip by -20 degrees */
+  transform: rotate(-145deg); /* Rotate fifth tooltip by -20 degrees */
 }
 .menu li:nth-child(7) .tooltiptext {
-    transform: rotate(-180deg); /* Rotate fifth tooltip by -20 degrees */
+  transform: rotate(-180deg); /* Rotate fifth tooltip by -20 degrees */
 }
 .menu li:nth-child(8) .tooltiptext {
-    transform: rotate(-215deg); /* Rotate fifth tooltip by -20 degrees */
+  transform: rotate(-215deg); /* Rotate fifth tooltip by -20 degrees */
 }
 
 .menu li:nth-child(9) .tooltiptext {
-    transform: rotate(-252deg); /* Rotate fifth tooltip by -20 degrees */
+  transform: rotate(-252deg); /* Rotate fifth tooltip by -20 degrees */
 }
 .menu li:nth-child(10) .tooltiptext {
-    transform: rotate(-290deg); /* Rotate fifth tooltip by -20 degrees */
+  transform: rotate(-290deg); /* Rotate fifth tooltip by -20 degrees */
 }
 
 .menu li:nth-child(11) .tooltiptext {
-    transform: rotate(35deg); /* No rotation for first tooltip */
+  transform: rotate(35deg); /* No rotation for first tooltip */
 }
 
 /* Menu Container */
 .menu {
-    position: fixed;
-    top: 40%;
-    right: 5vw;
-    transform: translateY(-50%);
-    width: 200px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-    padding-right: 30px;
+  position: fixed;
+  top: 40%;
+  right: 5vw;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  padding-right: 30px;
 }
 
 /* List Item Styles */
 .menu li {
-    position: absolute;
-    left: 0;
-    list-style: none;
-    transform-origin: 100px;
-    transition: 0.5s ease;
-    transition-delay: calc(0.1s * var(--i));
-    transform: rotate(0deg) translateX(80px);
+  position: absolute;
+  left: 0;
+  list-style: none;
+  transform-origin: 100px;
+  transition: 0.5s ease;
+  transition-delay: calc(0.1s * var(--i));
+  transform: rotate(0deg) translateX(80px);
 }
 
 .menu.active li {
-    transform: rotate(calc(360deg / 10 * var(--i))) translateX(200px);
+  transform: rotate(calc(360deg / 10 * var(--i))) translateX(200px);
 }
 
 /* Button Styles */
 .menu li a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    transform: rotate(calc(360deg / -10 * var(--i)));
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    transition: 0.4s ease;
-    text-align: center;
-    line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  transform: rotate(calc(360deg / -10 * var(--i)));
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.4s ease;
+  text-align: center;
+  line-height: 1.2;
 }
 
 /* Noticeable Gradients for Each Button */
 .menu li:nth-child(1) a {
-    background: linear-gradient(135deg, #6a11cb, #2575fc); /* Nervous system - deep purple to bright blue */
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* Nervous system - deep purple to bright blue */
 }
 
 .menu li:nth-child(2) a {
-    background: linear-gradient(135deg, #00b09b, #96c93d); /* Skeletal system - turquoise to lime green */
+  background: linear-gradient(135deg, #00b09b, #96c93d); /* Skeletal system - turquoise to lime green */
 }
 
 .menu li:nth-child(3) a {
-    background: linear-gradient(135deg, #ff512f, #f09819); /* Excretory system - fiery red to orange */
+  background: linear-gradient(135deg, #ff512f, #f09819); /* Excretory system - fiery red to orange */
 }
 
 .menu li:nth-child(4) a {
-    background: linear-gradient(135deg, #d31027, #ea384d); /* Respiratory system - deep red to vivid pink */
+  background: linear-gradient(135deg, #d31027, #ea384d); /* Respiratory system - deep red to vivid pink */
 }
 
 .menu li:nth-child(5) a {
-    background: linear-gradient(135deg, #8e2de2, #4a00e0); /* Digestive system - rich purple to deep indigo */
+  background: linear-gradient(135deg, #8e2de2, #4a00e0); /* Digestive system - rich purple to deep indigo */
 }
 
 .menu li:nth-child(6) a {
-    background: linear-gradient(135deg, #ff8008, #ffc837); /* Circulatory system - bright orange to golden yellow */
+  background: linear-gradient(135deg, #ff8008, #ffc837); /* Circulatory system - bright orange to golden yellow */
 }
 
 .menu li:nth-child(7) a {
-    background: linear-gradient(135deg, #801a1a, #d02626); /* Lymphatic system - dark blue to cyan */
+  background: linear-gradient(135deg, #801a1a, #d02626); /* Lymphatic system - dark blue to cyan */
 }
 
 .menu li:nth-child(8) a {
-    background: linear-gradient(135deg, #0bb6ff, #2c5364); /* Muscular system - deep teal to dark gray */
+  background: linear-gradient(135deg, #0bb6ff, #2c5364); /* Muscular system - deep teal to dark gray */
 }
 
 .menu li:nth-child(9) a {
-    background: linear-gradient(135deg, #f7971e, #ffd200); /* Endocrine system - golden yellow to bright amber */
+  background: linear-gradient(135deg, #f7971e, #ffd200); /* Endocrine system - golden yellow to bright amber */
 }
 
 .menu li:nth-child(10) a {
-    background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Integumentary system - vivid pink to bright red */
+  background: linear-gradient(135deg, #ff416c, #ff4b2b); /* Integumentary system - vivid pink to bright red */
 }
 
 .menu li:nth-child(11) a {
-    background: linear-gradient(135deg, #f12711, #f5af19); /* Extra button - rich red to golden orange */
+  background: linear-gradient(135deg, #f12711, #f5af19); /* Extra button - rich red to golden orange */
 }
 
 /* Hover Effect for Buttons */
 .menu li a:hover {
-    color: #fff;
-    background: linear-gradient(135deg, #ffffff, #ece9e6);
-    transform: scale(1.2) rotate(calc(360deg / -10 * var(--i)));
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  background: linear-gradient(135deg, #ffffff, #ece9e6);
+  transform: scale(1.2) rotate(calc(360deg / -10 * var(--i)));
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Toggle Button */
@@ -1366,159 +974,160 @@ img {
     transition: transform 1.25s ease;
     /*overflow: hidden; /* Added to contain the ripple effect */
 }
-
 .menu.active .toggle {
-    transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 /* Hollow Circle Animation */
 .toggle::before,
 .toggle::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.7);
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 0;
-    animation: expandCircle 2s infinite ease-in-out;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  animation: expandCircle 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .toggle::after {
-    animation-delay: 0.5s;
+  animation-delay: 0.5s;
 }
 
 @keyframes expandCircle {
-    0% {
+  0% {
         transform: translate(-50%, -50%) scale(0);
         opacity: 1;
-    }
+  }
     70% {
         transform: translate(-50%, -50%) scale(2.5);
         opacity: 0.5;
-    }
-    100% {
+  }
+  100% {
         transform: translate(-50%, -50%) scale(3);
         opacity: 0;
-    }
+  }
 }
 
 /* Enhanced Chatbox Styles with Gradients */
 #chatbox {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 350px;
-    height: 500px;
-    background: linear-gradient(135deg, #667eea, #764ba2); /* Beautiful gradient for chatbox */
-    border-radius: 20px;
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3); /* Strong shadow for a lifted effect */
-    display: none;
-    flex-direction: column;
-    z-index: 10001;
-    transition: all 0.3s ease-in-out; /* Smooth transition for open/close */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 25%;
+  height: 70%;
+  background: linear-gradient(135deg, #667eea, #764ba2); /* Beautiful gradient for chatbox */
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3); /* Strong shadow for a lifted effect */
+  display: none;
+  flex-direction: column;
+  z-index: 10001;
+  transition: all 0.3s ease-in-out; /* Smooth transition for open/close */
 }
 
 #messages {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    background: linear-gradient(135deg, #fdfbfb, #ebedee); /* Soft gradient for the message background */
-    border-radius: 20px 20px 0 0;
-    box-shadow: inset 0 -1px 10px rgba(0, 0, 0, 0.05); /* Inner shadow for message area */
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee); /* Soft gradient for the message background */
+  border-radius: 20px 20px 0 0;
+  box-shadow: inset 0 -1px 10px rgba(0, 0, 0, 0.05); /* Inner shadow for message area */
 }
 
 .message {
-    margin: 10px 0;
-    padding: 12px 16px;
-    border-radius: 15px;
-    background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Gradient for incoming messages */
-    color: #333;
-    max-width: 75%;
-    word-wrap: break-word;
-    font-size: 15px;
-    animation: fadeIn 0.5s ease;
+  margin: 10px 0;
+  padding: 12px 16px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb); /* Gradient for incoming messages */
+  color: #333;
+  max-width: 75%;
+  word-wrap: break-word;
+  font-size: 15px;
+  animation: fadeIn 0.5s ease;
 }
 
 .message.user {
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Gradient for user messages */
-    align-self: flex-end;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Gradient for user messages */
+  align-self: flex-end;
 }
 
 #input-box {
-    display: flex;
-    padding: 15px;
-    background-color: #ffffff;
-    border-top: 1px solid #ddd;
-    border-radius: 0 0 20px 20px;
-    box-shadow: inset 0 1px 12px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for input area */
+  display: flex;
+  padding: 15px;
+  background-color: #ffffff;
+  border-top: 1px solid #ddd;
+  border-radius: 0 0 20px 20px;
+  box-shadow: inset 0 1px 12px rgba(0, 0, 0, 0.1); /* Subtle inner shadow for input area */
 }
 
 #input-box input {
-    flex-grow: 1;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 12px;
-    margin-right: 10px;
-    font-size: 16px;
-    outline: none;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for input */
-    transition: border-color 0.3s ease;
+  flex-grow: 1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  margin-right: 10px;
+  font-size: 16px;
+  outline: none;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for input */
+  transition: border-color 0.3s ease;
 }
 
 #input-box input:focus {
-    border-color: #764ba2; /* Match gradient color on focus */
+  border-color: #764ba2; /* Match gradient color on focus */
 }
 
 #input-box button {
-    background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient for the send button */
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 10px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  background: linear-gradient(135deg, #667eea, #764ba2); /* Gradient for the send button */
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 #input-box button:hover {
-    transform: scale(1.05); /* Slight hover effect for send button */
+  transform: scale(1.05); /* Slight hover effect for send button */
 }
 
 #toggle-chatbox {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Gradient for toggle button */
-    color: white;
-    padding: 15px 25px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    z-index: 10002;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Strong shadow for toggle button */
-    transition: all 0.3s ease;
+  position: fixed;
+  bottom: 1.85%;
+  right: 1.85%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4); /* Gradient for toggle button */
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  z-index: 10002;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Strong shadow for toggle button */
+  transition: all 0.3s ease;
 }
 
 #toggle-chatbox:hover {
-    background-color: #f8a5c2; /* Slight color change on hover */
-    transform: scale(1.1); /* Slight hover effect */
+  background-color: #f8a5c2; /* Slight color change on hover */
+  transform: scale(1.1); /* Slight hover effect */
 }
 
 /* Smooth fade-in for chat messages */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
+  from {
+    opacity: 0;
         transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
+  }
+  to {
+    opacity: 1;
         transform: translateY(0);
-    }
+  }
 }
 
 .ttext {
@@ -1562,4 +1171,71 @@ img {
         opacity: 1;
         transform: translateX(-50%) translateY(0) scale(1);
     }
+}
+
+/* Cell Membrane Popup Styles */
+.cell-membrane-popup {
+    max-width: 90vw !important;
+    max-height: 90vh !important;
+}
+
+.cell-membrane-popup .swal2-html-container {
+    overflow: auto;
+    max-height: 70vh;
+}
+
+.cell-membrane-popup button[onclick] {
+    transition: all 0.3s ease !important;
+    background: rgba(255, 0, 0, 0.5) !important;
+    border: 2px solid #b30000 !important;
+    color: #fff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.cell-membrane-popup button[onclick]:hover {
+    background: rgba(255, 0, 0, 1) !important;
+    border-color: #7f0000 !important;
+    color: #fff !important;
+    transform: translate(-50%, -50%) scale(1.1) !important;
+    box-shadow: 0 4px 12px rgba(255,0,0,0.3) !important;
+}
+
+.cell-membrane-popup button[onclick]:active {
+    transform: translate(-50%, -50%) scale(0.95) !important;
+    background: #b30000 !important;
+    border-color: #7f0000 !important;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .cell-membrane-popup button[onclick] {
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 12px !important;
+    }
+    
+    .cell-membrane-popup .swal2-html-container {
+        font-size: 12px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .cell-membrane-popup button[onclick] {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 10px !important;
+    }
+}
+
+#phospho1 {
+    left: 45vw;
+    top: 80vh;
+}
+
+#phospho2 {
+    left: 44.5vw;
+    top: 90vh;
 }

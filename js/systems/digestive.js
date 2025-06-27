@@ -13,23 +13,23 @@ export function loaddigestive() {
     // Create sphere buttons for each digestive organ with exact coordinates from script.js
     createSphereBtn(0, 2, -1.025, () => {
         createBasicPopup("Small Intestine", "The small intestine is a long, coiled tube where most of the digestion and absorption of nutrients occur. It consists of three sections—the duodenum, jejunum, and ileum—each playing a vital role in breaking down food and absorbing vitamins, minerals, and other nutrients into the bloodstream.", () => loadintestine());
-    }, 0.7);
+    }, 0.7, true);
     
     createSphereBtn(0, 4, 0.2, () => {
         createBasicPopup("Pancreas", "The pancreas is a glandular organ located behind the stomach that plays a crucial role in both digestion and blood sugar regulation. It produces digestive enzymes that are released into the small intestine and hormones, such as insulin and glucagon, that help manage blood glucose levels.", () => loadpancreas());
-    }, 0.7);
+    }, 0.7, true);
     
     createSphereBtn(-1, 5, -1.3, () => {
         createBasicPopup("Stomach", "The stomach, a key part of the gastrointestinal (GI) tract, is a muscular organ that digests food using acids and enzymes. It's located in the upper left abdomen and has five sections: cardia, fundus, body, antrum, and pylorus. These sections work together to contract, mix, and process food before passing it to the small intestine.", () => loadstomach());
-    }, 0.7);
+    }, 0.7, true);
     
     createSphereBtn(0, 10, 1.025, () => {
         createBasicPopup("Esophagus", "The esophagus is a muscular tube that connects the throat to the stomach, allowing the passage of swallowed food and liquids. It uses coordinated muscle contractions, known as peristalsis, to move substances downward.", () => loadesophagus());
-    }, 0.7);
+    }, 0.7, true);
     
     createSphereBtn(1, 6, -1.5, () => {
         createBasicPopup("Liver", "The liver carries out numerous essential functions, such as detoxifying harmful substances from the blood, disposing of old red blood cells, producing bile to aid in digestion, metabolizing proteins, carbohydrates, and fats for energy, facilitating blood clotting, regulating blood volume, and storing glycogen and vitamins for later use. This organ is divided into two main parts: the larger right lobe and the smaller left lobe, both containing intricate networks of blood vessels and lobules.", () => loadliver());
-    }, 0.7);
+    }, 0.7, true);
     
     createSphereBtn(1.5151203100242423, 4.58159542163129, -0.4886603648770631, () => {
         createBasicPopup("Gallbladder", "The gallbladder is a small, pear-shaped organ located beneath the liver, responsible for storing and concentrating bile produced by the liver. This bile is released into the small intestine to aid in the digestion of fats.");
@@ -37,7 +37,7 @@ export function loaddigestive() {
     
     createSphereBtn(0.11901681452779656, 3.708769356834848, -1.5693504365953839, () => {
         createBasicPopup("Large Intestine (Colon)", "The colon, or large intestine, is the final part of the digestive system, responsible for absorbing water and electrolytes from indigestible food matter. It also compacts waste into feces for elimination from the body.", () => loadcolon());
-    }, 0.7);
+    }, 0.7, true);
     
     createSphereBtn(1.0278882681632533, -0.4251876960475176, -0.4062908418909057, () => {
         createBasicPopup("Appendix", "The appendix is a small, tube-shaped pouch attached to the lower end of the large intestine. Although its precise function is unclear, it is believed to play a role in the immune system and maintaining gut flora." );
@@ -64,7 +64,7 @@ export function loaddigestiveinsitu() {
     
     createSphereBtn(0, 2, -1.025, () => {
         createBasicPopup("View Digestive System", "", () => loaddigestive(1));
-    }, 0.7);
+    }, 0.7, true);
     
     document.getElementById('backHuman').style.display = 'block';
 }

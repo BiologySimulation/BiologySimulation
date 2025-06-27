@@ -1,4 +1,4 @@
-import { engine, scene } from './core/babylon-setup.js';
+import { engine, scene, camera } from './core/babylon-setup.js';
 import * as utils from './core/utils.js';
 
 import * as cell from './systems/cell.js';
@@ -31,37 +31,36 @@ Object.assign(window, {
     ...utils,
 });
 
-// Button factory utility for dynamic UI
-export function createButton({ 
-    id, 
-    text, 
-    onClick, 
-    className = "mui-btn mui-btn--primary largeBtn", 
-    style = "", 
-    parent = document.body, 
-    title = "" 
-}) {
-    // Remove existing button with same id
-    const oldBtn = document.getElementById(id);
-    if (oldBtn) oldBtn.remove();
-    const btn = document.createElement("button");
-    btn.id = id;
-    btn.textContent = text;
-    btn.className = className;
-    btn.style = style;
-    if (title) btn.title = title;
-    btn.onclick = onClick;
-    parent.appendChild(btn);
-    return btn;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     human.loadhuman();
     engine.runRenderLoop(function () {
         scene.render();
     });
+
+    // // Debugging: print 3D position of mouse click on mesh
+    // scene.onPointerObservable.add(function(pointerInfo) {
+    //     if (pointerInfo.type === BABYLON.PointerEventTypes.POINTERPICK) {
+    //         const pickInfo = pointerInfo.pickInfo;
+    //         if (pickInfo && pickInfo.hit && pickInfo.pickedMesh && pickInfo.pickedPoint) {
+    //             const p = pickInfo.pickedPoint;
+    //             console.log(`Clicked Position:\n${p.x}, ${p.y}, ${p.z}`);
+    //         }
+    //     }
+    // }, BABYLON.PointerEventTypes.POINTERPICK);
 });
 
 window.addEventListener("resize", function () {
     engine.resize();
-}); 
+});
+
+// // Debugging: print camera position when 'P' is pressed
+// window.addEventListener('keydown', function(e) {
+//     if (e.key === 'p' || e.key === 'P') {
+//         if (camera && camera.position) {
+//             const p = camera.position;
+//             console.log(`Camera Position:\n${p.x}, ${p.y}, ${p.z}`);
+//         } else {
+//             console.log('Babylon camera not found or not initialized.');
+//         }
+//     }
+// }); 

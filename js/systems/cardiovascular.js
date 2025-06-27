@@ -8,12 +8,12 @@ export function loadcirculatory() {
     clearbtns()
     showbtn(document.getElementById("backHuman"));
     document.getElementById('title').innerHTML = "Circulatory System";
-    importmesh("circulatory_system.glb", new BABYLON.Vector3(80, 0.5, 80), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(10, 10, 10));
+    importmesh("circulatory_system.glb", new BABYLON.Vector3(-0.5417921374724932, 14.655978586494381, -26.567630504877478), new BABYLON.Vector3(0, 9, 0), 23, new BABYLON.Vector3(10, 10, 10));
     
     // Create sphere buttons for each circulatory component with exact coordinates from script.js
     createSphereBtn(0, 12.8, -0.6, () => {
         createBasicPopup("Heart", "The heart is the central organ of the circulatory, or cardiovascular, system. Its main function is to pump blood to deliver oxygen and nutrients to all the cells and tissues in the body. The heart maintains homeostasis and plays a critical role in oxygenating blood. In addition, it regulates blood pressure and supports the entire circulatory system. The heart is divided into four chambers: two atria and two ventricles, with one atrium and one ventricle on the left side and one atrium and one ventricle on the right side. The right atrium receives deoxygenated blood from the body and pumps it into the right ventricle, which then sends the blood to the lungs through the pulmonary artery for oxygenation. The left atrium receives freshly oxygenated blood from the lungs and pushes it into the left ventricle, which pumps the oxygen-rich blood out to the rest of the body. To ensure a one-way circulation of blood, valves are located between the atria and ventricles, preventing backflow.", () => loadheart(1));
-    }, 0.5);
+    }, 0.5, true);
     
     createSphereBtn(-0.55, 5.8, -0.3, () => {
         createBasicPopup("Artery", "Arteries (colored red) are thick blood vessels that bring blood away from the heart. Blood in arteries is always oxygenated, with the exception of the pulmonary artery, which brings deoxygenated blood away from the heart to the lungs to become oxygenated.");

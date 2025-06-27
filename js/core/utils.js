@@ -1,5 +1,7 @@
 import { scene, camera, engine } from "./babylon-setup.js";
 
+const PERMANENT_BUTTONS = ["send-button", "toggle-chatbox", "backbtn"];
+
 export let state = {
     meshes: [],
     buttons: [],
@@ -39,7 +41,7 @@ export function clearbtns() {
     // Set visibility to 0 for every <button> element in the document
     const allButtons = document.querySelectorAll('button');
     allButtons.forEach(btn => {
-        if (btn.id != "backbtn" && btn.id != "toggle-chatbox") {
+        if (!PERMANENT_BUTTONS.includes(btn.id)) {
             btn.style.visibility = 'hidden';
         }
     });
@@ -81,7 +83,7 @@ export function importmesh(filename, camera_position = null, camera_target = nul
     });
 }
 
-export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diameter = 0.25) {
+export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diameter = 0.25, has3DModelBtn = false) {
     if (!scene) {
         console.error("Scene is not initialized");
         return;
@@ -91,7 +93,11 @@ export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diam
     sphere.position.set(depth, verticalpos, horizontalpos);
 
     const sphereMaterial = new BABYLON.StandardMaterial("sphereMaterialInstance", scene);
-    sphereMaterial.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5); // grey
+    if (has3DModelBtn) {
+        sphereMaterial.diffuseColor = new BABYLON.Color3(0.2, 0.4, 0.9); // blue for 3D model btn
+    } else {
+        sphereMaterial.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5); // grey default
+    }
     sphere.material = sphereMaterial;
 
     state.meshes.push(sphere);
@@ -118,7 +124,7 @@ export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diam
     );
     sphere.actionManager.registerAction(
         new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function () {
-            sphere.material.diffuseColor = new BABYLON.Color3(0.2, 0.8, 0.2); // green
+            sphere.material.diffuseColor = has3DModelBtn ? new BABYLON.Color3(0.1, 0.7, 1.0) : new BABYLON.Color3(0.2, 0.8, 0.2); // blue highlight or green
         })
     );
 
@@ -133,7 +139,7 @@ export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diam
     );
     sphere.actionManager.registerAction(
         new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function () {
-            sphere.material.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5); // grey
+            sphere.material.diffuseColor = has3DModelBtn ? new BABYLON.Color3(0.2, 0.4, 0.9) : new BABYLON.Color3(0.5, 0.5, 0.5); // reset to base color
         })
     );
 
@@ -341,7 +347,7 @@ export function createBasicPopup(title, description, loadingFunction = null, mod
  * @param btn btn that opens the panel -- needed only if btn needs to be hidden upon clicking
  * @param show whether to show or hide the button when panel is closed
  */
-export function createPanel(className, titleText, classNameClose, textInnerHTML, btn = null, show) {
+export function createPanel(className, titleText, classNameClose, textInnerHTML, btn = null, show = false) {
     // new Promise((resolve) => {
     // Create the main div
     const panel = document.createElement("div");
@@ -386,10 +392,12 @@ export function createPanel(className, titleText, classNameClose, textInnerHTML,
 
     document.querySelector(`.${classNameClose}`).onclick = () => {
         removeClass(panel, "cd-panel--is-visible");
-        if (show) {
-            showbtn(btn); // dont want to see the info button when panel is closed, so hide this btn on click of the close btn
-        } else {
-            hidebtn(btn);
+        if(btn != null) {
+            if (show) {
+                showbtn(btn); // dont want to see the info button when panel is closed, so hide this btn on click of the close btn
+            } else {
+                hidebtn(btn);
+            }
         }
     };
     // resolve(panel);
@@ -545,4 +553,28 @@ export function btncheck(mem) {
     else {
         backHuman.classList.add("animbtn");
     }
+}
+
+// Button factory utility for dynamic UI
+export function createButton({ 
+    id, 
+    text, 
+    onClick, 
+    className = "mui-btn mui-btn--primary largeBtn", 
+    style = "", 
+    parent = document.body, 
+    title = "" 
+}) {
+    // Remove existing button with same id
+    const oldBtn = document.getElementById(id);
+    if (oldBtn) oldBtn.remove();
+    const btn = document.createElement("button");
+    btn.id = id;
+    btn.textContent = text;
+    btn.className = className;
+    btn.style = style;
+    if (title) btn.title = title;
+    btn.onclick = onClick;
+    parent.appendChild(btn);
+    return btn;
 }

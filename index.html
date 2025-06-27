@@ -40,15 +40,9 @@
     <button onclick = "loadhuman()" id="backHuman" class="mui-btn mui-btn--primary largeBtn">Human Anatomy</button>
     <button onclick = "loadexcretory(0)" id="backExretory" class="mui-btn mui-btn--primary largeBtn">Go Back to Exretory System</button>
     <button onclick = "loadkidney(0)" id="backKidney" class="mui-btn mui-btn--primary largeBtn">Go Back to Kidney</button>
-    <button onclick = "showExteriorBrain()" style="display: none;" id="exterior" class="mui-btn mui-btn--primary largeBtn">Show Exterior View</button>
+    <button onclick = "showExteriorBrain()" style="display: none;" id="exterior" class="mui-btn mui-btn--primary largeBtn pulse">Show Exterior View</button>
     <button onclick="loadcell()" id="backcell" class="mui-btn mui-btn--primary largeBtn">Cellular Structure</button>
-    <button onclick="membraneclicked()" style="display: none;" id="memb" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Singular Phospholipid">1</button>
-    <button onclick="phosphoclicked()" style="display: none;" id="phospho" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Phospholipid Bilayer">2</button>
-    <button onclick="phosphoclicked2()" style="display: none;" id="phospho2" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="2 Phospholipids">3</button>
-    <button onclick="openchannel()" style="display: none;" id="channeltransport" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Channel Transport">4</button>
-    <button onclick="cholestrolclicked()" style="display: none;" id="cholestrol" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Cholesterol">5</button>
-    <button onclick="receptorproteinclicked()" style="display: none;" id="receptorprotein" class="mui-btn mui-btn--fab mui-btn--primary smlbtns pulse" title="Receptor Protein">6</button>
-    <button onclick = "loadpanel()" style="display: none;" id="panelbtn" class="mui-btn mui-btn--primary largeBtn pulse">Brain Information</button>
+    <button onclick = "loadPanel('brainpanel')" style="display: none;" id="brainpanelbtn" class="mui-btn mui-btn--primary largeBtn pulse">Brain Information</button>
     <button onclick = "loadribopanel()" style="display: none;" id="ribopanelbtn" class="mui-btn mui-btn--primary largeBtn pulse">Ribosome Info</button>
     <button onclick = "loadneuron(1)" style="display: none;" id="neuron" class="mui-btn mui-btn--primary largeBtn pulse">Show Neuron</button>
     <button onclick = "loadETC(1)" style="display: no8ne;" id="ETC" class="mui-btn mui-btn--primary largeBtn pulse">Show Electron Transport Chain</button>
@@ -69,7 +63,6 @@
     <button onclick="phosphoclicked2()" style="display: none;" id="stroma" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">3</button>
     <button onclick="phosphoclicked2()" style="display: none;" id="descement" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">4</button>
     <button onclick="openchannel()" style="display: none;" id="endothelium" class="mui-btn mui-btn--primary mui-btn--fab corneabtns pulse">5</button>
-    <button onclick="loaddna()" style="display: none;" id="dna" class="mui-btn mui-btn--primary mui-btn--primary largeBtn dnabtns pulse">3D Model</button>
       
       
       <div class="topnav" id = "tabBtn" style="display: none;">
@@ -92,7 +85,7 @@
   <div id="messages"></div>
   <div id="input-box">
     <input type="text" id="user-input" placeholder="Type a message">
-    <button onclick="sendMessage()">Send</button>
+    <button id="send-button" onclick="sendMessage()">Send</button>
   </div>
 </div>
     <script>
@@ -106,11 +99,11 @@
             if (chatbox.style.display === 'none' || chatbox.style.display === '') {
                 chatbox.style.display = 'flex';
                 toggleButton.textContent = 'Close Chat';
-                toggleButton.style.bottom = '420px'; // Adjust this value as needed
+                toggleButton.style.bottom = '74%';
             } else {
                 chatbox.style.display = 'none';
                 toggleButton.textContent = 'Open Chat';
-                toggleButton.style.bottom = '20px';
+                toggleButton.style.bottom = '1.85%';
             }
         }
 
@@ -302,8 +295,12 @@
 <script>
   let toggle = document.querySelector('.toggle');
   let menu = document.querySelector('.menu');
+  let ttext = document.querySelector('.ttext');
   toggle.onclick = function(){
-    menu.classList.toggle('active')
+    if (ttext) {
+      ttext.style.display = 'none'; // Hide only the "Organ Systems" text
+    }
+    menu.classList.toggle('active'); // Keep the normal toggle functionality
   }
 </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
