@@ -12,7 +12,7 @@ export function loadendocrine() {
     
     createSphereBtn(0.38177421210721185, 10.476974486561003, -0.7496007303027916, () => {
         createBasicPopup("View Endocrine System", "", () => loadendocrine1());
-    }, 0.4);
+    }, 0.4, true);
     
     document.getElementById('backHuman').style.display = 'block';
 }

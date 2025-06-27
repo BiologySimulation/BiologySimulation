@@ -84,13 +84,13 @@ function cellSpheres() {
     
     createSphereBtn(0.4, 0.2, 3.3, function () {
         createBasicPopup("Cell Mitochondria", "The mitochondria, aka the 'powerhouse of the cell', is a very important organelle that primarily functions in generating energy in the form of ATP for cellular processes through cellular respiration. The anatomy of a mitochondrion is designed to maximize energy production. The inner and outer membranes increase surface area and provide a place for energy production to happen.", () => loadmitochondria());
-    });
+    }, 0.25, true);
     createSphereBtn(0.3, 0.2, 0, function () {
         createBasicPopup("Cell Nucleus", "The nucleus serves as the control center of the cell, and is where genetic information is stored. The DNA is enclosed in a protective structure called the nuclear envelope. This is a double membrane made up of a phospholipid bilayer, much like that of the cell membrane. Holes in the envelope, called nuclear pores, regulate what goes in and out of the nucleus. The interior of the nucleus, also called the nucleoplasm, contains the genetic material of the cell. In humans, there are 23 pairs of chromosomes, and the nucleus is where processes such as DNA replication and transcription happen. The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis.");
-    });
+    }, 0.25);
     createSphereBtn(-1.3, 0.2, 1.7, function () {
         createBasicPopup("Cell Golgi", 'The Golgi apparatus, aka the Golgi body, is an organelle composed of a series of small, flat sacs stacked in the cell\'s cytoplasm. The function of the Golgi apparatus is to sort out and package protein and lipid molecules synthesized by the ER or free-floating ribosomes for intercellular use or transport out of the cell. Additionally, the Golgi can add "tags" to molecules, making them more structurally stable. It can sometimes also locate where the tagged structure goes.', () => loadgolgi());
-    });
+    }, 0.25, true);
     createSphereBtn(
         0.4839717512431795,
         0.070853748469808,
@@ -115,16 +115,16 @@ function cellSpheres() {
     );
     createSphereBtn(1.8, 0.2, -0.5, function () {
         createBasicPopup("Rough Endoplasmic Reticulum", "The Rough ER, studded with ribosomes, plays a role in synthesizing and secreting proteins. It also acts as a membrane factory, growing by incorporating proteins and phospholipids and transporting them via vesicles to other parts of the cell.", () => loadrougher());
-    });
+    }, 0.25, true);
     createSphereBtn(1.2248904211980474, 0.16952203700465684, 1.8693672639905412, function () {
         createBasicPopup("Smooth Endoplasmic Reticulum", "(add description here)", () => loadsmoother());
-    });
+    }, 0.25, true);
     createSphereBtn(0.353150398090031, 0.4304624896982965, -0.32896007806854577, function () {
         createBasicPopup("Nucleolus", "The nucleolus is a condensed region inside the nucleus, and it is the location of assembly of ribosomes (rRNA), which exit the nucleus for use in protein synthesis. ", () => loaddna());
-    });
+    }, 0.25, true);
     createSphereBtn(1.1942075977140756, 0.15042321941889902, 2.4992473761184826, function () {
         createBasicPopup("Centrioles", "Centrioles are essential for cell division, aiding in the organization of microtubules during mitosis and meiosis. They also contribute to the formation of cilia and flagella, crucial for cell movement and sensory functions. ");
-    });
+    }, 0.25);
 
 }
 

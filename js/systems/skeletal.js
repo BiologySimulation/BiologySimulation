@@ -36,51 +36,51 @@ export function loadskeletal() {
     // Create sphere buttons for each bone
     createSphereBtn(0, 7, -0.51, () => {
         createImagePopUp("Skull", "Protects the brain and houses sensory organs like the eyes and ears. Click the button to learn more.", "images/skullpicture.jpg", window.innerWidth * 0.6, window.innerHeight * 0.4, () => loadskull(), "3D Model", () => loadPanel(skullpanel.id));
-    });
+    }, 0.4, true);
     
     createSphereBtn(0, 3, 0.8, () => {
         createImagePopUp("Spine", "Provides support and protection for the spinal cord and allows for movement. Click the button to learn more.", "images/spinepicture.png", window.innerWidth * 0.3, window.innerHeight * 0.7, null, null, () => loadPanel(spinepanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(1, -1, -0.2, () => {
         createImagePopUp("Femur", "The thigh bone, which is the longest and strongest bone in the body, supporting body weight and facilitating walking and running.", "images/femur.png", window.innerWidth * 0.2, window.innerHeight * 0.7, null, null, () => loadPanel(femurpanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(0, 0, -0.5, () => {
         createImagePopUp("Pelvis", "Forms the base of the spine and supports the body's weight; also protects internal reproductive organs.", "images/pelvis.png", window.innerWidth * 0.4, window.innerHeight * 0.4, null, null, () => loadPanel(pelvispanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(-0.5, 3.5, -1, () => {
         createImagePopUp("Ribs", "Protect the vital organs in the chest, such as the heart and lungs.", "images/ribs.png", window.innerWidth * 0.4, window.innerHeight * 0.4, null, null, () => loadPanel(ribspanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(-1.8, 3, 0.2, () => {
         createImagePopUp("Humerus", "The upper arm bone that connects the shoulder to the elbow and allows for arm movement.", "images/humerus.png", window.innerWidth * 0.4, window.innerHeight * 0.6, null, null, () => loadPanel(humeruspanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(0.8, -4, -0.2, () => {
         createImagePopUp("Tibia and Fibula", "The two bones in the lower leg, with the tibia bearing most of the body's weight and the fibula providing stability.", "images/tibfibpicture.webp", window.innerWidth * 0.5, window.innerHeight * 0.5, null, null, () => loadPanel(tibfibpanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(-2.5, 1, 0.2, () => {
         createImagePopUp("Radius and Ulna", "The bones of the forearm that allow for forearm rotation and wrist movement.", "images/radiusulnapicture.jpg", window.innerWidth * 0.5, window.innerHeight * 0.5, null, null, () => loadPanel(radulnpanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(0, 3.5, -1, () => {
         createImagePopUp("Sternum (aka Breastbone)", "Protects the heart and lungs and anchors the ribcage.", "images/sternumpicture.jpg", window.innerWidth * 0.4, window.innerHeight * 0.6, null, null, () => loadPanel(sternumpanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(-0.82, 4, 0.8, () => {
         createImagePopUp("Scapula (aka Shoulder Blade)", "Provides attachment for muscles that control shoulder and arm movement.", "images/scapulapicture.jpg", window.innerWidth * 0.4, window.innerHeight * 0.6, null, null, () => loadPanel(scapulapanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(0.5, -7, -0.9, () => {
         createImagePopUp("Phalange", "Phalanges are the smaller bones that make up the fingers and toes, with each digit typically consisting of three phalanges (proximal, middle, and distal).", "images/handpicture.svg", window.innerWidth * 0.5, window.innerHeight * 0.5, null, null, () => loadPanel(phalangepanel.id));
-    });
+    }, 0.4);
     
     createSphereBtn(-2.8, -0.6, 0.2, () => {
         createImagePopUp("Phalange", "Phalanges are the smaller bones that make up the fingers and toes, with each digit typically consisting of three phalanges (proximal, middle, and distal).", "images/handpicture.svg", window.innerWidth * 0.5, window.innerHeight * 0.5, null, null, () => loadPanel(phalangepanel.id));
-    });
+    }, 0.4);
 
     document.getElementById('backHuman').style.display = 'block';
 }

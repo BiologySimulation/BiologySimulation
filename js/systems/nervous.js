@@ -12,10 +12,10 @@ export function loadnervous() {
     importmesh("nervous_system.glb", new BABYLON.Vector3(-0.5497548092807188, 11.712026266553464, -21.876621326031675), new BABYLON.Vector3(0.05740795922190678,7.15830432454763,0.9948979818070001), null, new BABYLON.Vector3(8, 8, 8));
     createSphereBtn(-0.0847792182819817,13.727592170977577,-0.13707866476222108, function () {
        createBasicPopup("Central Nervous System (CNS)", "The central nervous system (CNS) comprises the brain and spinal cord, serving as the primary control center for processing sensory information, generating thoughts, emotions, and memories, and coordinating voluntary and involuntary actions throughout the body. It interprets incoming data and sends out commands to the peripheral nervous system to execute responses. ", () => loadspine());
-    });
+    }, 0.4, true);
     createSphereBtn(-2.117950967884778,9.656626590025594,0.807392259406166, function () {
         createBasicPopup("Peripheral Nervous System (PNS)", "The peripheral nervous system (PNS) consists of all the nerves outside the brain and spinal cord, including cranial and spinal nerves, and is responsible for transmitting sensory information to the CNS and carrying out its motor commands. It connects the CNS to muscles, glands, and sensory receptors, facilitating communication between the brain and the body's extremities and organs.");
-     });
+     }, 0.4);
 
     createPanel(
         "brainpanel",
@@ -149,8 +149,8 @@ export function loadspine() {
     importmesh("nervoussystem.glb", new BABYLON.Vector3(10, 1, 10), new BABYLON.Vector3(0, 5, 0), null, new BABYLON.Vector3(0.13, 0.13, 0.13));
     camera.upperRadiusLimit = 100;
     
-    createSphereBtn(0, 7.5, 2.5, () => createBasicPopup("Brain","The brain is the central organ of the nervous system. It is a highly complex organ that is responsible for controlling and regulating all bodily functions, including movement, sensation, thought, memory, and emotion.", () => loadbrain()), 0.7);
-    createSphereBtn(-0.36, 2.21, 0.51, () => createBasicPopup("Spinal Cord","The pathway for nerve impulses to travel from the brain to the body and vice versa.", () => loadspine()), 0.7);
+    createSphereBtn(0, 7.5, 2.5, () => createBasicPopup("Brain","The brain is the central organ of the nervous system. It is a highly complex organ that is responsible for controlling and regulating all bodily functions, including movement, sensation, thought, memory, and emotion.", () => loadbrain()), 0.7, true);
+    createSphereBtn(-0.36, 2.21, 0.51, () => createBasicPopup("Spinal Cord","The pathway for nerve impulses to travel from the brain to the body and vice versa.", () => loadspine()), 0.7, true);
     
     document.getElementById('backHuman').style.display = 'block';
 }

@@ -992,6 +992,8 @@ img {
   transform: translate(-50%, -50%) scale(0);
   opacity: 0;
   animation: expandCircle 2s infinite ease-in-out;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .toggle::after {
@@ -1018,8 +1020,8 @@ img {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 350px;
-  height: 500px;
+  width: 25%;
+  height: 70%;
   background: linear-gradient(135deg, #667eea, #764ba2); /* Beautiful gradient for chatbox */
   border-radius: 20px;
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3); /* Strong shadow for a lifted effect */

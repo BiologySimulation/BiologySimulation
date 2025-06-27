@@ -83,7 +83,7 @@ export function importmesh(filename, camera_position = null, camera_target = nul
     });
 }
 
-export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diameter = 0.25) {
+export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diameter = 0.25, has3DModelBtn = false) {
     if (!scene) {
         console.error("Scene is not initialized");
         return;
@@ -93,7 +93,11 @@ export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diam
     sphere.position.set(depth, verticalpos, horizontalpos);
 
     const sphereMaterial = new BABYLON.StandardMaterial("sphereMaterialInstance", scene);
-    sphereMaterial.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5); // grey
+    if (has3DModelBtn) {
+        sphereMaterial.diffuseColor = new BABYLON.Color3(0.2, 0.4, 0.9); // blue for 3D model btn
+    } else {
+        sphereMaterial.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5); // grey default
+    }
     sphere.material = sphereMaterial;
 
     state.meshes.push(sphere);
@@ -120,7 +124,7 @@ export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diam
     );
     sphere.actionManager.registerAction(
         new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOverTrigger, function () {
-            sphere.material.diffuseColor = new BABYLON.Color3(0.2, 0.8, 0.2); // green
+            sphere.material.diffuseColor = has3DModelBtn ? new BABYLON.Color3(0.1, 0.7, 1.0) : new BABYLON.Color3(0.2, 0.8, 0.2); // blue highlight or green
         })
     );
 
@@ -135,7 +139,7 @@ export function createSphereBtn(depth, verticalpos, horizontalpos, onclick, diam
     );
     sphere.actionManager.registerAction(
         new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnPointerOutTrigger, function () {
-            sphere.material.diffuseColor = new BABYLON.Color3(0.5, 0.5, 0.5); // grey
+            sphere.material.diffuseColor = has3DModelBtn ? new BABYLON.Color3(0.2, 0.4, 0.9) : new BABYLON.Color3(0.5, 0.5, 0.5); // reset to base color
         })
     );
 
