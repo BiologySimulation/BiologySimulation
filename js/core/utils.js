@@ -45,8 +45,22 @@ export function clearbtns() {
             btn.style.visibility = 'hidden';
         }
     });
+
+    const phosphoDropdown = document.getElementById("phospholipid-dropdown");
+    if (phosphoDropdown) phosphoDropdown.remove();
 }
 
+/**
+ * Imports a 3D mesh model into the Babylon.js scene and optionally sets camera position, target, radius, scaling, and mesh position.
+ * Also shows a loading UI while the model loads and hides it when ready or on error.
+ *
+ * @param {string} filename - The filename of the model to import (should be in the 'models/' directory).
+ * @param {BABYLON.Vector3|null} [camera_position=null] - Optional camera position to set after loading.
+ * @param {BABYLON.Vector3|boolean|null} [camera_target=null] - Optional camera target to set after loading. If false, camera target is not changed.
+ * @param {number|null} [camera_radius=null] - Optional camera radius to set after loading.
+ * @param {BABYLON.Vector3|null} [scaling=null] - Optional scaling to apply to the imported mesh.
+ * @param {BABYLON.Vector3|null} [position=null] - Optional position to set for the imported mesh.
+ */
 export function importmesh(filename, camera_position = null, camera_target = null, camera_radius = null, scaling = null, position = null) {
     Swal.close();
     showui();
@@ -344,10 +358,8 @@ export function createBasicPopup(title, description, loadingFunction = null, mod
  * @param titleText title displayed at top of panel
  * @param classNameClose class of the button that closes panel (ex. brainclose, riboclose)
  * @param textInnerHTML text displayed in body of panel
- * @param btn btn that opens the panel -- needed only if btn needs to be hidden upon clicking
- * @param show whether to show or hide the button when panel is closed
  */
-export function createPanel(className, titleText, classNameClose, textInnerHTML, btn = null, show = false) {
+export function createPanel(className, titleText, classNameClose, textInnerHTML) {
     // new Promise((resolve) => {
     // Create the main div
     const panel = document.createElement("div");
@@ -392,13 +404,6 @@ export function createPanel(className, titleText, classNameClose, textInnerHTML,
 
     document.querySelector(`.${classNameClose}`).onclick = () => {
         removeClass(panel, "cd-panel--is-visible");
-        if(btn != null) {
-            if (show) {
-                showbtn(btn); // dont want to see the info button when panel is closed, so hide this btn on click of the close btn
-            } else {
-                hidebtn(btn);
-            }
-        }
     };
     // resolve(panel);
 

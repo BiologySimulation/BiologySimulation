@@ -1,11 +1,9 @@
 import { camera } from '../core/babylon-setup.js';
 import { updateNavigationHistory } from '../core/utils.js';
-import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn, createButton } from '../core/utils.js';
+import { createSphereBtn, importmesh, clear, clearbtns, createBasicPopup, checkvis, showui, hidebtn, showbtn, createButton, loadPanel, createPanel } from '../core/utils.js';
 
 function cellSpheres() {
-    createSphereBtn(0, 0, 3.8, function () {
-        let btns = document.querySelectorAll(".smlbtns");
-        
+    createSphereBtn(0, 0, 3.8, function () {        
         // Create a responsive HTML structure for the cell membrane popup
         const cellMembraneHTML = `
             <div style="text-align: center; max-width: 100%;">
@@ -80,7 +78,7 @@ function cellSpheres() {
                 // Buttons are now positioned with CSS percentages
             }
         })
-    });
+    }, 0.25, true);
     
     createSphereBtn(0.4, 0.2, 3.3, function () {
         createBasicPopup("Cell Mitochondria", "The mitochondria, aka the 'powerhouse of the cell', is a very important organelle that primarily functions in generating energy in the form of ATP for cellular processes through cellular respiration. The anatomy of a mitochondrion is designed to maximize energy production. The inner and outer membranes increase surface area and provide a place for energy production to happen.", () => loadmitochondria());
@@ -91,27 +89,37 @@ function cellSpheres() {
     createSphereBtn(-1.3, 0.2, 1.7, function () {
         createBasicPopup("Cell Golgi", 'The Golgi apparatus, aka the Golgi body, is an organelle composed of a series of small, flat sacs stacked in the cell\'s cytoplasm. The function of the Golgi apparatus is to sort out and package protein and lipid molecules synthesized by the ER or free-floating ribosomes for intercellular use or transport out of the cell. Additionally, the Golgi can add "tags" to molecules, making them more structurally stable. It can sometimes also locate where the tagged structure goes.', () => loadgolgi());
     }, 0.25, true);
+
+    let ribotext = ` 
+    Structure - Ribosomes are made up of two main components, the large subunit and the small subunit. Ribosomes are made in the nucleolus where four strands of rRNA combine with ribosomal proteins to make the large and small subunit. 
+    <br><br>
+    Function - The main function of ribosomes is to help build proteins. In the process of building proteins, they are present in the translation. After the transcription happens, where the mRNA is produced as a copy of DNA, The mRNA goes to the ribosome to start the process of translation. In translation, The mRNA is translated by the tRNA to bring the corresponding amino acids and produce a polypeptide chain. The process of producing a polypeptide can be split into three parts. The initiation of translation starts when the tRNA binds to the start codon of the mRNA this happens on the small subunit of the ribosome, then the large subunit of the ribosome covers the small subunit of the ribosome, the elongation of the proteins starts. To accommodate the tRNA, ribosomes have an A site, P site, and an E site. The tRNA first enters through the P site of the ribosome with an amino acid attached to it. There will be another tRNA in the P site of the ribosome with the current chain of amino acids. The chain of polypeptides on the P site will be attached to the amino acid of the tRNA on the A site so the current chain of polypeptides in the tRNA on the A site. Then the tRNA in the P site will exit the ribosome though the E site and the tRNA with the polypeptides will move to the P site. This cycle will continue till the end of the polypeptide when the tRNA reads the end codon. 
+    <br><br>
+    Position - There are two types of ribosomes, bound and unbound ribosomes. Bound ribosomes are typically present on the nuclear envelope or the endoplasmic reticulum(ER) while unbound ribosomes float around in the cytosol. While the position of the ribosomes have no difference in structure, they both produce different types of proteins. Proteins made from bound ribosomes usually carry materials that are exported from the cell or are inserted into membranes, like lysosomes. The amount of ribosomes present in the cell depends on the cell function and its need for proteins. For example, cells in the pancreas frequently export digestive enzymes, therefore it has a lot of bound ribosomes.
+    <br><br>
+    mRNA decides if protein is made on ER or cytosol. mRNA has a signal to tell if protein is made on ER or cytosol. Those made on ER need further modification
+    <br><br>
+    Evolution - Early life forms relied more heavily on RNA for both genetic information storage and catalytic functions. In the context of ribosomes, this suggests that primitive ribosomes might have been composed primarily of RNA, with catalytic roles carried out by ribozymes (RNA molecules with enzymatic activity).
+    <br><br>
+    Over time, as organisms evolved, there was a transition from an RNA-centric world to one where proteins took on more structural and catalytic roles. This led to the development of the modern ribosome, which is a complex made up of both RNA and proteins. The small and large subunits of the ribosome are composed of ribosomal RNA (rRNA) and proteins, and they work together to facilitate the synthesis of proteins in a highly orchestrated process.
+    <br><br><br><br>
+    `;
+    let ribopanel = createPanel("ribopanel", "Ribosome Functionality", "riboclose", ribotext, false);
+
     createSphereBtn(
-        0.4839717512431795,
-        0.070853748469808,
-        2.111442063940009,
+        0.28544865999113617, -0.015085010293525603, 2.0371446696496496,
         function () {
-            showbtn(document.getElementById("ribopanelbtn"));
-            Swal.fire({
-                title: "Ribosome",
-                text: "Ribosomes, complexes made of ribosomal RNA (rRNA) and protein, carry out protein synthesis in cells. They are made up of a larger top subunit and a smaller bottom subunit. These both interact with mRNA and tRNA molecules to perform translation. High rates of protein synthesis are associated with an abundance of ribosomes. Ribosomes function in two cytoplasmic locations: free ribosomes in the cytosol and bound ribosomes attached to the rough endoplasmic reticulum or nuclear envelope. Both bound and free ribosomes are structurally identical and can switch roles. Free ribosomes produce proteins for the cytosol, such as enzymes catalyzing sugar breakdown, while bound ribosomes create proteins for membrane insertion, packaging within organelles, or cell export, common in cells specialized in protein secretion, like the pancreas cells that secrete digestive enzymes.",
-                icon: "question",
-                background: "black",
-                color: "white",
-                backdrop: false,
-            }).then(function () {
-                // after "ok" button is clicked and the ribo info panel btn does not have the specified class, then hide the btn
-                if (!document.getElementById("ribopanelbtn").classList.contains("cd-panel--is-visible")) {
-                        hidebtn(document.getElementById("ribopanelbtn"));
-                    }
-            });
+            createBasicPopup(
+                "Ribosome",
+                "Ribosomes, complexes made of ribosomal RNA (rRNA) and protein, carry out protein synthesis in cells. They are made up of a larger top subunit and a smaller bottom subunit. These both interact with mRNA and tRNA molecules to perform translation. High rates of protein synthesis are associated with an abundance of ribosomes. Ribosomes function in two cytoplasmic locations: free ribosomes in the cytosol and bound ribosomes attached to the rough endoplasmic reticulum or nuclear envelope. Both bound and free ribosomes are structurally identical and can switch roles. Free ribosomes produce proteins for the cytosol, such as enzymes catalyzing sugar breakdown, while bound ribosomes create proteins for membrane insertion, packaging within organelles, or cell export, common in cells specialized in protein secretion, like the pancreas cells that secrete digestive enzymes.",
+                () => loadribosome(),
+                "3D Model",
+                () => loadPanel(ribopanel.id),
+                "Info"
+            );
         },
-        0.15
+        0.15,
+        true
     );
     createSphereBtn(1.8, 0.2, -0.5, function () {
         createBasicPopup("Rough Endoplasmic Reticulum", "The Rough ER, studded with ribosomes, plays a role in synthesizing and secreting proteins. It also acts as a membrane factory, growing by incorporating proteins and phospholipids and transporting them via vesicles to other parts of the cell.", () => loadrougher());
@@ -138,20 +146,26 @@ export function loadcell() {
     document.getElementById('title').innerHTML = "Cell";
     camera.lowerRadiusLimit = 2;
     Swal.close();
-    importmesh("ribosoma.glb", null, null, null, new BABYLON.Vector3(0.4855579893367401, -0.19247690443455667, 2.106724807070549));
-    importmesh("animal_cell.glb", new BABYLON.Vector3(-10, 100, 5), new BABYLON.Vector3(0, 0, 0), 5);
+    importmesh("ribosoma.glb", null, false, null, new BABYLON.Vector3(0.75, 0.75, 0.75), new BABYLON.Vector3(0.285891139806715, -0.19598621967280927, 1.9844400980925068));
+    importmesh("animal_cell.glb", new BABYLON.Vector3(-10, 100, 5), new BABYLON.Vector3(0.30131802632214566, 0.09506459871646733, 0.4884553111889417), 5);
     cellSpheres();
+}
+
+export function loadribosome() {
+    updateNavigationHistory("loadribosome()");
+    clear();
+    clearbtns()
+    showbtn(document.getElementById("backcell"));
+    importmesh("ribosoma.glb", new BABYLON.Vector3(0, 0, 0));
+    document.getElementById("title").innerHTML = "Ribosome";
 }
 
 export function membraneclicked() {
     updateNavigationHistory("membraneclicked()");
     clear();
-    document.getElementById("phospho1").textContent = "Single Phospholipid";
-    document.getElementById("phospho1").onclick = phosphoclicked;
-    document.getElementById("phospho2").textContent = "Double Phospholipid";
-    document.getElementById("phospho2").onclick = phosphoclicked2;
+    createPhospholipidDropdown("membrane");
     importmesh("cell_membrane.glb", new BABYLON.Vector3(0, 0, 0), new BABYLON.Vector3(5.138798059509928, -2.55476766845, -4.7430779286881455), 20);
-    document.getElementById("title").innerHTML = "Cell Membrane";
+    document.getElementById("title").innerHTML = "Phospholipid Bilayer";
     document.getElementById('backHuman').style.display = 'none';
     document.getElementById('backcell').style.display = 'block';
 }
@@ -161,38 +175,112 @@ export function phosphoclicked() {
     clear();
     clearbtns();
     showbtn(document.getElementById("backcell"));
+    createPhospholipidDropdown("single");
     importmesh("phospho_sama.glb", new BABYLON.Vector3(18.165862883491645, 5.896657820488788, -1.885683407535689), new BABYLON.Vector3(0.15086973704248052, 0.27308798455651484, -0.6523204123200439));
     document.getElementById("title").innerHTML = "Phospholipid";
     document.getElementById('backHuman').style.display = 'none';
     document.getElementById('backcell').style.display = 'block';
-
-    createButton({
-        id: "phospho1",
-        text: "Double Phospholipid",
-        onClick: () => {
-            phosphoclicked2();
-        }
-    });
-    createButton({
-        id: "phospho2",
-        text: "Phospholipid Bilayer",
-        onClick: () => {
-            membraneclicked();
-        }
-    });
 }
 
 export function phosphoclicked2() {
     updateNavigationHistory("phosphoclicked2()");
     clear();
-    document.getElementById("phospho1").textContent = "Single Phospholipid";
-    document.getElementById("phospho1").onclick = phosphoclicked;
-    document.getElementById("phospho2").textContent = "Phospholipid Bilayer";
-    document.getElementById("phospho2").onclick = membraneclicked;
+    createPhospholipidDropdown("double");
     importmesh("phospholipid.glb", new BABYLON.Vector3(-2.1062699042840367e-14, 5.26434436600806e-16, 8.597326787892316), new BABYLON.Vector3(2.0678336313738668, 0.0545294321544116, -0.22056811927664288), null, new BABYLON.Vector3(0.01, 0.01, 0.01));
     document.getElementById("title").innerHTML = "2 Phospholipids";
     document.getElementById('backHuman').style.display = 'none';
     document.getElementById('backcell').style.display = 'block';
+}
+
+// Helper function to create the phospholipid dropdown
+function createPhospholipidDropdown(selectedOption) {
+    clearbtns();
+    showbtn(document.getElementById("backcell"));
+    
+    // Create dropdown container
+    const dropdownContainer = document.createElement("div");
+    dropdownContainer.id = "phospholipid-dropdown";
+    dropdownContainer.style.cssText = `
+        position: absolute;
+        left: 44vw;
+        top: 80vh;
+        z-index: 100;
+        font-family: "amazon-ember";
+        font-size: calc(0.65vw + 0.65vh);
+        animation: animbtn 1.3s ease forwards;
+    `;
+    
+    // Create select element
+    const select = document.createElement("select");
+    select.style.cssText = `
+        padding: 8px 12px;
+        border: 2px solid #ff7e5f;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #ff7e5f, #feb47b);
+        color: white;
+        font-family: "amazon-ember";
+        font-size: calc(0.65vw + 0.65vh);
+        cursor: pointer;
+        min-width: 200px;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    `;
+    
+    // Create options
+    const options = [
+        { value: "single", text: "Single Phospholipid" },
+        { value: "double", text: "Double Phospholipid" },
+        { value: "membrane", text: "Phospholipid Bilayer" }
+    ];
+    
+    options.forEach(option => {
+        const optionElement = document.createElement("option");
+        optionElement.value = option.value;
+        optionElement.textContent = option.text;
+        optionElement.style.cssText = `
+            background: #333;
+            color: white;
+            padding: 8px;
+        `;
+        if (option.value === selectedOption) {
+            optionElement.selected = true;
+        }
+        select.appendChild(optionElement);
+    });
+    
+    // Add hover effect
+    select.addEventListener("mouseenter", function() {
+        this.style.background = "linear-gradient(135deg, #ff6a3d, #fd9644)";
+        this.style.borderColor = "#ff6a3d";
+        this.style.transform = "scale(1.05)";
+    });
+    
+    select.addEventListener("mouseleave", function() {
+        this.style.background = "linear-gradient(135deg, #ff7e5f, #feb47b)";
+        this.style.borderColor = "#ff7e5f";
+        this.style.transform = "scale(1)";
+    });
+    
+    // Add change event listener
+    select.addEventListener("change", function() {
+        const selectedValue = this.value;
+        switch(selectedValue) {
+            case "single":
+                phosphoclicked();
+                break;
+            case "double":
+                phosphoclicked2();
+                break;
+            case "membrane":
+                membraneclicked();
+                break;
+        }
+    });
+    
+    // Assemble dropdown
+    dropdownContainer.appendChild(select);
+    document.body.appendChild(dropdownContainer);
 }
 
 export function openchannel() {
